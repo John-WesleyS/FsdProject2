@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GovExam Hub — India's Complete Exam Guidance Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0e1a;
+  --surface: #111827;
+  --surface2: #1a2235;
+  --surface3: #222d42;
+  --border: #2a3a58;
+  --accent: #f59e0b;
+  --accent2: #3b82f6;
+  --accent3: #10b981;
+  --accent4: #ef4444;
+  --accent5: #8b5cf6;
+  --text: #e8edf5;
+  --text2: #94a3b8;
+  --text3: #64748b;
+  --glow: rgba(245,158,11,0.15);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* ── HEADER ── */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,14,26,0.95);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 24px;
+}
+.header-inner{
+  max-width:1400px;margin:0 auto;
+  display:flex;align-items:center;gap:16px;
+  height:64px;flex-wrap:wrap;
+}
+.logo{
+  font-family:'Syne',sans-serif;
+  font-size:1.3rem;font-weight:800;
+  color:var(--accent);letter-spacing:-0.5px;
+  white-space:nowrap;
+}
+.logo span{color:var(--text2);}
+nav{
+  display:flex;gap:4px;flex-wrap:wrap;
+  margin-left:auto;
+}
+nav button{
+  background:none;border:none;
+  color:var(--text2);
+  font-family:'DM Sans',sans-serif;
+  font-size:.85rem;font-weight:500;
+  padding:6px 14px;border-radius:8px;
+  cursor:pointer;transition:.2s;
+  white-space:nowrap;
+}
+nav button:hover,nav button.active{
+  background:var(--surface2);color:var(--accent);
+}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,#0a0e1a 0%,#0f1829 40%,#0d1520 100%);
+  padding:60px 24px 40px;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(59,130,246,.12),transparent);
+}
+.hero::after{
+  content:'';position:absolute;
+  top:-40px;right:-60px;width:400px;height:400px;
+  background:radial-gradient(circle,rgba(245,158,11,.07),transparent 70%);
+  pointer-events:none;
+}
+.hero-inner{max-width:1400px;margin:0 auto;position:relative;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);
+  color:var(--accent);border-radius:100px;
+  padding:4px 14px;font-size:.75rem;font-weight:600;
+  letter-spacing:.05em;text-transform:uppercase;
+  margin-bottom:20px;
+}
+.hero h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:800;line-height:1.1;
+  margin-bottom:16px;
+}
+.hero h1 span{
+  background:linear-gradient(90deg,var(--accent),#f97316);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p{
+  color:var(--text2);font-size:1.05rem;
+  max-width:600px;line-height:1.7;margin-bottom:32px;
+}
+.stats-row{
+  display:flex;gap:32px;flex-wrap:wrap;
+}
+.stat{display:flex;flex-direction:column;gap:2px;}
+.stat-n{
+  font-family:'Syne',sans-serif;
+  font-size:1.8rem;font-weight:800;color:var(--accent);
+}
+.stat-l{font-size:.8rem;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;}
+
+/* ── SEARCH ── */
+.search-bar{
+  max-width:1400px;margin:0 auto;
+  padding:0 24px;
+  position:relative;z-index:10;
+  transform:translateY(-24px);
+}
+.search-wrap{
+  display:flex;gap:12px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;padding:8px;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.search-wrap input{
+  flex:1;background:none;border:none;outline:none;
+  color:var(--text);font-family:'DM Sans',sans-serif;
+  font-size:1rem;padding:8px 12px;
+}
+.search-wrap input::placeholder{color:var(--text3);}
+.search-btn{
+  background:var(--accent);color:#000;
+  border:none;border-radius:10px;
+  padding:10px 24px;font-family:'Syne',sans-serif;
+  font-weight:700;font-size:.9rem;cursor:pointer;
+  transition:.2s;white-space:nowrap;
+}
+.search-btn:hover{background:#d97706;}
+
+/* ── FILTERS ── */
+.filters{
+  max-width:1400px;margin:0 auto;
+  padding:0 24px 24px;
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+}
+.filter-label{
+  font-size:.8rem;color:var(--text3);
+  font-weight:600;text-transform:uppercase;
+  letter-spacing:.06em;
+}
+.filter-group{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text2);border-radius:100px;
+  padding:6px 16px;font-size:.82rem;font-weight:500;
+  cursor:pointer;transition:.2s;
+  white-space:nowrap;
+}
+.chip:hover{border-color:var(--accent);color:var(--accent);}
+.chip.active{
+  background:rgba(245,158,11,.15);
+  border-color:var(--accent);color:var(--accent);
+}
+.chip.central{border-color:var(--accent2);}
+.chip.central.active{
+  background:rgba(59,130,246,.15);
+  border-color:var(--accent2);color:var(--accent2);
+}
+
+/* ── MAIN GRID ── */
+.main{
+  max-width:1400px;margin:0 auto;
+  padding:0 24px 60px;
+}
+.section-title{
+  font-family:'Syne',sans-serif;
+  font-size:1.5rem;font-weight:700;
+  margin-bottom:20px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-title .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);
+}
+
+/* Exam Cards Grid */
+.exam-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
+  gap:20px;margin-bottom:40px;
+}
+.exam-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;
+  cursor:pointer;transition:.25s;
+  position:relative;
+}
+.exam-card:hover{
+  border-color:var(--accent);
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(0,0,0,.4),0 0 0 1px rgba(245,158,11,.2);
+}
+.card-head{
+  padding:20px 20px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:14px;
+}
+.card-icon{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+}
+.card-title{
+  font-family:'Syne',sans-serif;
+  font-size:1rem;font-weight:700;
+  line-height:1.3;margin-bottom:4px;
+}
+.card-sub{font-size:.78rem;color:var(--text3);}
+.card-tags{
+  display:flex;gap:6px;flex-wrap:wrap;
+  padding:12px 20px;
+  border-bottom:1px solid var(--border);
+}
+.tag{
+  font-size:.7rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:.04em;
+  padding:3px 10px;border-radius:100px;
+}
+.tag-state{background:rgba(139,92,246,.15);color:#a78bfa;}
+.tag-central{background:rgba(59,130,246,.15);color:#60a5fa;}
+.tag-rail{background:rgba(16,185,129,.15);color:#34d399;}
+.tag-police{background:rgba(239,68,68,.15);color:#f87171;}
+.tag-teach{background:rgba(245,158,11,.15);color:#fbbf24;}
+.tag-upsc{background:rgba(236,72,153,.15);color:#f472b6;}
+.tag-group{background:rgba(99,102,241,.15);color:#818cf8;}
+.card-body{padding:14px 20px;}
+.info-row{
+  display:flex;align-items:center;gap:8px;
+  font-size:.82rem;color:var(--text2);
+  margin-bottom:8px;
+}
+.info-row span:first-child{color:var(--text3);width:90px;flex-shrink:0;}
+.card-footer{
+  padding:12px 20px;
+  background:var(--surface2);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.status-badge{
+  font-size:.72rem;font-weight:600;
+  padding:4px 12px;border-radius:100px;
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.status-active{background:rgba(16,185,129,.15);color:#34d399;}
+.status-upcoming{background:rgba(245,158,11,.15);color:#fbbf24;}
+.status-closed{background:rgba(100,116,139,.15);color:#64748b;}
+.view-btn{
+  font-size:.8rem;color:var(--accent2);
+  font-weight:600;cursor:pointer;
+  background:none;border:none;
+  font-family:'DM Sans',sans-serif;
+}
+
+/* ── MODAL ── */
+.overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(6px);
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:24px;overflow-y:auto;
+  opacity:0;pointer-events:none;transition:.25s;
+}
+.overlay.open{opacity:1;pointer-events:all;}
+.modal{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+  width:100%;max-width:900px;
+  overflow:hidden;
+  transform:translateY(20px);transition:.25s;
+  margin:auto;
+}
+.overlay.open .modal{transform:translateY(0);}
+.modal-header{
+  padding:24px 28px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:16px;
+  background:var(--surface2);
+}
+.modal-icon{
+  width:56px;height:56px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.7rem;flex-shrink:0;
+}
+.modal-title{
+  font-family:'Syne',sans-serif;
+  font-size:1.4rem;font-weight:800;
+  margin-bottom:4px;
+}
+.modal-sub{color:var(--text2);font-size:.9rem;}
+.modal-close{
+  margin-left:auto;background:var(--surface3);
+  border:1px solid var(--border);color:var(--text2);
+  width:36px;height:36px;border-radius:8px;
+  cursor:pointer;font-size:1.1rem;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  transition:.2s;
+}
+.modal-close:hover{color:var(--accent);border-color:var(--accent);}
+
+/* Modal Tabs */
+.modal-tabs{
+  display:flex;gap:0;
+  border-bottom:1px solid var(--border);
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.modal-tabs::-webkit-scrollbar{display:none;}
+.mtab{
+  padding:14px 20px;
+  font-size:.85rem;font-weight:600;
+  color:var(--text3);cursor:pointer;
+  border-bottom:2px solid transparent;
+  white-space:nowrap;transition:.2s;
+  background:none;border-top:none;border-left:none;border-right:none;
+  font-family:'DM Sans',sans-serif;
+}
+.mtab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.mtab:hover:not(.active){color:var(--text2);}
+.modal-body{padding:28px;min-height:300px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* Content Styles */
+.info-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:16px;margin-bottom:28px;
+}
+.info-box{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:12px;padding:16px;
+}
+.info-box-label{
+  font-size:.72rem;color:var(--text3);
+  text-transform:uppercase;letter-spacing:.06em;
+  margin-bottom:6px;
+}
+.info-box-val{
+  font-family:'Syne',sans-serif;
+  font-size:1rem;font-weight:700;color:var(--text);
+}
+h3.sec{
+  font-family:'Syne',sans-serif;
+  font-size:1rem;font-weight:700;
+  color:var(--text);margin-bottom:12px;margin-top:24px;
+  padding-bottom:8px;border-bottom:1px solid var(--border);
+}
+h3.sec:first-child{margin-top:0;}
+.syllabus-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:12px;margin-bottom:20px;
+}
+.syllabus-box{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;padding:14px;
+}
+.syllabus-box h4{
+  font-size:.85rem;font-weight:700;
+  color:var(--accent);margin-bottom:8px;
+}
+.syllabus-box ul{
+  list-style:none;padding:0;
+}
+.syllabus-box ul li{
+  font-size:.8rem;color:var(--text2);
+  padding:3px 0;padding-left:12px;
+  position:relative;
+}
+.syllabus-box ul li::before{
+  content:'›';position:absolute;left:0;color:var(--accent);
+}
+.timeline-list{padding:0;list-style:none;}
+.timeline-item{
+  display:flex;gap:16px;padding:14px 0;
+  border-bottom:1px solid var(--border);
+}
+.timeline-item:last-child{border-bottom:none;}
+.tl-date{
+  min-width:120px;font-family:'JetBrains Mono',monospace;
+  font-size:.78rem;color:var(--accent);font-weight:600;
+}
+.tl-event{font-size:.88rem;color:var(--text2);}
+.cutoff-table{
+  width:100%;border-collapse:collapse;
+  font-size:.85rem;
+}
+.cutoff-table th{
+  background:var(--surface2);color:var(--text3);
+  font-size:.72rem;text-transform:uppercase;
+  letter-spacing:.06em;padding:10px 14px;text-align:left;
+  border-bottom:2px solid var(--border);
+}
+.cutoff-table td{
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  color:var(--text2);
+}
+.cutoff-table tr:last-child td{border-bottom:none;}
+.cutoff-table tr:hover td{background:var(--surface2);}
+.material-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:12px;
+}
+.material-card{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:10px;padding:14px;
+  display:flex;align-items:center;gap:12px;
+  transition:.2s;cursor:pointer;
+}
+.material-card:hover{border-color:var(--accent2);}
+.mat-icon{
+  width:40px;height:40px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;background:var(--surface3);flex-shrink:0;
+}
+.mat-title{font-size:.85rem;font-weight:600;margin-bottom:3px;}
+.mat-sub{font-size:.75rem;color:var(--text3);}
+.alert-box{
+  background:rgba(245,158,11,.08);
+  border:1px solid rgba(245,158,11,.3);
+  border-radius:10px;padding:14px;
+  font-size:.85rem;color:var(--text2);
+  margin-bottom:16px;
+  display:flex;gap:10px;align-items:flex-start;
+}
+
+/* ── QUICK LINKS ── */
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:12px;margin-bottom:40px;
+}
+.quick-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:16px;
+  text-align:center;cursor:pointer;transition:.2s;
+}
+.quick-card:hover{
+  border-color:var(--accent);
+  background:var(--surface2);
+}
+.quick-icon{font-size:1.6rem;margin-bottom:8px;}
+.quick-label{
+  font-size:.8rem;font-weight:600;color:var(--text2);
+  font-family:'Syne',sans-serif;
+}
+
+/* ── NOTIFICATIONS STRIP ── */
+.notif-strip{
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:12px;padding:16px 20px;
+  margin-bottom:32px;
+  display:flex;align-items:center;gap:12px;overflow:hidden;
+}
+.notif-label{
+  background:var(--accent4);color:#fff;
+  font-size:.72rem;font-weight:700;
+  padding:3px 10px;border-radius:4px;
+  text-transform:uppercase;white-space:nowrap;
+}
+.notif-scroll{
+  flex:1;overflow:hidden;position:relative;
+}
+.notif-text{
+  white-space:nowrap;
+  animation:scroll-x 30s linear infinite;
+  font-size:.85rem;color:var(--text2);
+  display:inline-block;
+}
+@keyframes scroll-x{
+  0%{transform:translateX(100%);}
+  100%{transform:translateX(-100%);}
+}
+
+/* ── EMPTY STATE ── */
+.empty{
+  text-align:center;padding:60px 20px;
+  color:var(--text3);
+}
+.empty-icon{font-size:3rem;margin-bottom:12px;}
+.empty h3{font-family:'Syne',sans-serif;margin-bottom:8px;color:var(--text2);}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);
+  padding:24px;text-align:center;
+  color:var(--text3);font-size:.82rem;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .header-inner{height:auto;padding:12px 0;gap:8px;}
+  nav{width:100%;justify-content:center;}
+  .hero{padding:40px 16px 30px;}
+  .stats-row{gap:20px;}
+  .search-bar{padding:0 16px;}
+  .search-wrap{flex-direction:column;gap:8px;}
+  .search-btn{width:100%;}
+  .filters{padding:0 16px 20px;}
+  .main{padding:0 16px 40px;}
+  .exam-grid{grid-template-columns:1fr;}
+  .modal{border-radius:16px;}
+  .modal-header{padding:18px 18px;}
+  .modal-body{padding:18px;}
+  .info-grid{grid-template-columns:1fr 1fr;}
+  .syllabus-grid{grid-template-columns:1fr;}
+  .tl-date{min-width:90px;}
+  .material-grid{grid-template-columns:1fr;}
+  .quick-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:400px){
+  .logo{font-size:1.1rem;}
+  .info-grid{grid-template-columns:1fr;}
+  .quick-grid{grid-template-columns:repeat(2,1fr);}
+  .overlay{padding:12px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">GovExam<span>Hub</span> 🇮🇳</div>
+    <nav>
+      <button class="active" onclick="showPage('home')">Home</button>
+      <button onclick="showPage('central')">Central Exams</button>
+      <button onclick="showPage('state')">State Exams</button>
+      <button onclick="showPage('calendar')">Calendar</button>
+      <button onclick="showPage('notifications')">Notifications</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🎯 India's #1 Exam Guidance Portal</div>
+    <h1>Your Complete Guide to<br><span>Government Exams</span></h1>
+    <p>Syllabus, exam patterns, timelines, notifications, study material, and previous year cut-offs — all in one place. State-wise & Central exams covered.</p>
+    <div class="stats-row">
+      <div class="stat"><span class="stat-n">200+</span><span class="stat-l">Exams Covered</span></div>
+      <div class="stat"><span class="stat-n">28+</span><span class="stat-l">States</span></div>
+      <div class="stat"><span class="stat-n">50+</span><span class="stat-l">Study Materials</span></div>
+      <div class="stat"><span class="stat-n">Live</span><span class="stat-l">Notifications</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-bar">
+  <div class="search-wrap">
+    <input id="searchInput" type="text" placeholder="Search exams — UPSC, SSC, RRB, TET, Police, Group D..." oninput="filterExams()">
+    <button class="search-btn" onclick="filterExams()">🔍 Search</button>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- Notifications Strip -->
+  <div class="notif-strip">
+    <span class="notif-label">🔴 LIVE</span>
+    <div class="notif-scroll">
+      <span class="notif-text" id="notifText">Loading notifications...</span>
+    </div>
+  </div>
+
+  <!-- Quick Links -->
+  <div class="section-title"><div class="dot"></div> Browse by Category</div>
+  <div class="quick-grid" id="quickLinks"></div>
+
+  <!-- FILTERS -->
+  <div class="filters" id="filterArea">
+    <span class="filter-label">Filter:</span>
+    <div class="filter-group" id="filterChips"></div>
+  </div>
+
+  <!-- Exam Grid -->
+  <div class="section-title"><div class="dot"></div> <span id="gridTitle">All Government Exams</span></div>
+  <div class="exam-grid" id="examGrid"></div>
+</div>
+
+<footer>
+  <p>GovExamHub &copy; 2025 — India's Complete Government Exam Guidance Portal. Data is indicative; always verify from official notifications.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header" id="modalHeader"></div>
+    <div class="modal-tabs" id="modalTabs"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════
+   DATA
+═══════════════════════════════════════════════ */
+const notifications = [
+  "🔔 UPSC Civil Services 2025 Notification Released — Apply by April 30 |",
+  "🔔 SSC CGL 2025 Exam Dates Announced — Tier I: July 2025 |",
+  "🔔 RRB NTPC 2025 Registration Open — Last Date May 15 |",
+  "🔔 AP APPSC Group 1 2025 Notification Out |",
+  "🔔 Telangana TSPSC AEE 2025 Results Declared |",
+  "🔔 UP Police Constable 2025 Exam Schedule Released |",
+  "🔔 IBPS PO 2025 Notification Expected June 2025 |",
+  "🔔 TN TRB PG Asst 2025 Counselling Ongoing |",
+  "🔔 Maharashtra MPSC State Service 2025 Prelims in August |",
+  "🔔 Kerala PSC LDC 2025 — Rank List Published |"
+];
+
+const categories = [
+  {id:'all',icon:'🏛️',label:'All Exams'},
+  {id:'central',icon:'🇮🇳',label:'Central'},
+  {id:'upsc',icon:'👔',label:'UPSC'},
+  {id:'railway',icon:'🚂',label:'Railways'},
+  {id:'banking',icon:'🏦',label:'Banking'},
+  {id:'police',icon:'👮',label:'Police'},
+  {id:'teacher',icon:'📚',label:'Teaching'},
+  {id:'defence',icon:'⚔️',label:'Defence'},
+  {id:'state',icon:'🗺️',label:'State PSC'},
+  {id:'group',icon:'📋',label:'Group D/C/B'},
+];
+
+const EXAMS = [
+  // ─── CENTRAL ───
+  {
+    id:'upsc_cse',title:'UPSC Civil Services (IAS/IPS/IFS)',
+    short:'UPSC CSE',icon:'👔',state:'Central',type:'central',
+    category:['upsc','central'],
+    colorBg:'rgba(236,72,153,.15)',colorText:'#f472b6',
+    conducting:'Union Public Service Commission',
+    posts:'IAS, IPS, IFS, IRS and 24 other services',
+    vacancies:'~1000 (varies annually)',
+    eligibility:'Any Graduate (Min 21, Max 32 yrs)',
+    mode:'Offline (OMR + Descriptive)',
+    language:'English & Hindi',
+    status:'upcoming',
+    notification:'Feb 2025',
+    applyLast:'March 2025',
+    prelims:'June 2025',
+    mains:'Sept 2025',
+    interview:'Jan 2026',
+    result:'April 2026',
+    syllabus:{
+      'GS Paper I':['Indian Heritage & Culture','History of India','Geography of India & World'],
+      'GS Paper II':['Governance & Constitution','Polity','Social Justice','International Relations'],
+      'GS Paper III':['Technology','Economic Development','Biodiversity','Security','Disaster Management'],
+      'GS Paper IV':['Ethics, Integrity & Aptitude','Public Administration'],
+      'CSAT (Qualifying)':['Comprehension','Logical Reasoning','Analytical Ability','Decision Making','Basic Numeracy'],
+      'Optional Subjects':['26 Options Available','Mains Paper VI & VII','250 Marks Each'],
+    },
+    pattern:[
+      {stage:'Prelims (Screening)',papers:'GS Paper I (100Q, 200M) + CSAT (80Q, 200M)',duration:'2 hrs each',marks:'200+200'},
+      {stage:'Mains (Written)',papers:'9 Papers: Essay + GS I-IV + Optional I-II + Lang',duration:'3 hrs each',marks:'1750'},
+      {stage:'Personality Test',papers:'Interview by UPSC Board',duration:'~30 min',marks:'275'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'1009 (GS+Interview combined)',obc:'994',sc:'981',st:'958',ews:'984'},
+      {year:'2022',general:'1011',obc:'999',sc:'988',st:'960',ews:'987'},
+      {year:'2021',general:'987',obc:'975',sc:'962',st:'935',ews:'968'},
+    ],
+    materials:[
+      {icon:'📖',title:'NCERT Books (VI–XII)',type:'Free PDFs','desc':'Foundation reading'},
+      {icon:'📰',title:'The Hindu / PIB',type:'Daily','desc':'Current Affairs'},
+      {icon:'📋',title:'Previous Year Papers',type:'PDF','desc':'2010–2024'},
+      {icon:'🎥',title:'UPSC Pathshala YouTube',type:'Free','desc':'Video lectures'},
+      {icon:'📘',title:'Laxmikant Polity',type:'Book','desc':'M.Laxmikant'},
+      {icon:'📙',title:'Spectrum Modern India',type:'Book','desc':'Rajiv Ahir'},
+    ],
+  },
+  {
+    id:'ssc_cgl',title:'SSC Combined Graduate Level (CGL)',
+    short:'SSC CGL',icon:'📋',state:'Central',type:'central',
+    category:['central','group'],
+    colorBg:'rgba(99,102,241,.15)',colorText:'#818cf8',
+    conducting:'Staff Selection Commission',
+    posts:'Inspector (IT/CB/CE), Asst Section Officer, Auditor, UDC, DEO, etc.',
+    vacancies:'~17,000',
+    eligibility:'Graduate (21-32 yrs, varies by post)',
+    mode:'CBT (Online)',
+    language:'English & Hindi',
+    status:'active',
+    notification:'Sept 2024',
+    applyLast:'Oct 2024',
+    tier1:'Jan–March 2025',
+    tier2:'June–July 2025',
+    result:'Oct 2025',
+    syllabus:{
+      'Tier I — General Intelligence':['Analogy','Series','Coding-Decoding','Directions','Blood Relations','Puzzles'],
+      'Tier I — General Awareness':['History','Geography','Polity','Economics','Science','Current Affairs'],
+      'Tier I — Quantitative Aptitude':['Number System','Ratio & Proportion','Percentage','Profit-Loss','Geometry','Trigonometry','DI'],
+      'Tier I — English':['Reading Comprehension','Error Spotting','Fill in Blanks','One Word Sub','Cloze Test'],
+      'Tier II — Mathematical Abilities':['Advanced Maths','Statistics (for JSO)'],
+      'Tier II — English Language':['Grammar','Vocabulary','Comprehension'],
+    },
+    pattern:[
+      {stage:'Tier I (Screening)',papers:'4 Sections x 25Q = 100Q',duration:'60 min',marks:'200'},
+      {stage:'Tier II (Main)',papers:'Session I (3 hrs) + Session II (2.15 hrs)',duration:'5+ hrs',marks:'690'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'146 (T1)',obc:'138',sc:'130',st:'125',ews:'140'},
+      {year:'2022',general:'144',obc:'136',sc:'129',st:'122',ews:'138'},
+      {year:'2021',general:'142',obc:'134',sc:'127',st:'120',ews:'136'},
+    ],
+    materials:[
+      {icon:'📖',title:'Kiran SSC CGL Guide',type:'Book','desc':'Complete guide'},
+      {icon:'📋',title:'Previous Year Papers',type:'PDF','desc':'2010–2024'},
+      {icon:'🎥',title:'SSC Adda YouTube',type:'Free','desc':'Video lectures'},
+      {icon:'📘',title:'Rakesh Yadav Maths',type:'Book','desc':'Quantitative'},
+    ],
+  },
+  {
+    id:'rrb_ntpc',title:'RRB Non-Technical Popular Categories (NTPC)',
+    short:'RRB NTPC',icon:'🚂',state:'Central',type:'central',
+    category:['railway','central'],
+    colorBg:'rgba(16,185,129,.15)',colorText:'#34d399',
+    conducting:'Railway Recruitment Boards (21 RRBs)',
+    posts:'Junior Clerk, Accounts Clerk, Junior Time Keeper, Commercial cum Ticket Clerk, Traffic Asst, Goods Guard, Sr Commercial cum Ticket Clerk, Sr Clerk cum Typist, JSA, Sr Time Keeper, Commercial Apprentice, Station Master',
+    vacancies:'~11,558',
+    eligibility:'10+2 to Graduation (18-33 yrs)',
+    mode:'CBT (Online)',
+    language:'15 languages',
+    status:'active',
+    notification:'Sept 2024',
+    applyLast:'Oct 2024',
+    cbt1:'Feb–April 2025',
+    cbt2:'June 2025',
+    skill:'July–Aug 2025',
+    result:'Dec 2025',
+    syllabus:{
+      'Mathematics':['Number System','Decimals','Fractions','LCM & HCF','Ratio & Proportion','Percentage','Mensuration','Time & Work','Time & Distance','SI & CI','Profit & Loss','Elementary Algebra','Geometry','Trigonometry'],
+      'General Intelligence':['Analogies','Completion of Number/Alphabetic Series','Coding-Decoding','Directions','Data Sufficiency','Statement Conclusion','Venn Diagrams','Blood Relations'],
+      'General Awareness':['Current Events (National & International)','Games & Sports','Art & Culture','Geography','Economics','Politics','Science'],
+    },
+    pattern:[
+      {stage:'CBT Stage 1',papers:'Maths 30Q + GI&R 30Q + GA 40Q = 100Q',duration:'90 min',marks:'100'},
+      {stage:'CBT Stage 2',papers:'Maths 35Q + GI&R 35Q + GA 50Q = 120Q',duration:'90 min',marks:'120'},
+      {stage:'CBAT / Typing Skill Test',papers:'Aptitude for Station Master; Typing for Clerk posts',duration:'Varies',marks:'Qualifying'},
+    ],
+    cutoffs:[
+      {year:'2019 Cycle',general:'70 (CBT1)',obc:'65',sc:'62',st:'58',ews:'68'},
+      {year:'2016 Cycle',general:'75',obc:'70',sc:'67',st:'62',ews:'N/A'},
+    ],
+    materials:[
+      {icon:'📖',title:'Arihant RRB NTPC Guide',type:'Book','desc':'Complete guide'},
+      {icon:'📋',title:'RRB Previous Papers',type:'PDF','desc':'All years'},
+      {icon:'🎥',title:'Exampur YouTube',type:'Free','desc':'Free classes'},
+    ],
+  },
+  {
+    id:'rrb_groupd',title:'RRB Group D (Level 1)',
+    short:'RRB Group D',icon:'🚂',state:'Central',type:'central',
+    category:['railway','central','group'],
+    colorBg:'rgba(16,185,129,.15)',colorText:'#34d399',
+    conducting:'Railway Recruitment Boards',
+    posts:'Track Maintainer, Helper (Electrical/Mechanical/Signal & Telecom), Porter, Pointsman, Gateman',
+    vacancies:'~32,000',
+    eligibility:'10th Pass + ITI or Equivalent (18-33 yrs)',
+    mode:'CBT + PET',
+    language:'15 languages',
+    status:'upcoming',
+    notification:'Jan 2025',
+    applyLast:'Feb 2025',
+    exam:'May–June 2025',
+    pet:'Aug 2025',
+    result:'Nov 2025',
+    syllabus:{
+      'Mathematics':['Number System','BODMAS','Decimals & Fractions','LCM/HCF','Ratio','Percentage','Mensuration','Time/Work/Distance','SI/CI','Profit/Loss','Geometry','Trigonometry'],
+      'General Intelligence & Reasoning':['Analogy','Coding-Decoding','Blood Relations','Series','Puzzles','Non-verbal'],
+      'General Science':['Physics (10th level)','Chemistry (10th level)','Life Sciences (10th level)'],
+      'General Awareness':['Current Affairs','Sports','Art & Culture','Geography','Polity','Economy'],
+    },
+    pattern:[
+      {stage:'CBT (Online)',papers:'Maths 25Q + GI&R 30Q + GS 25Q + GA 20Q = 100Q',duration:'90 min',marks:'100'},
+      {stage:'PET (Physical)',papers:'Male: 35kg carry 100m in 2min; 1000m in 4.15min; Female: 20kg in 2min; 1000m in 5.40min',duration:'As specified',marks:'Qualifying'},
+      {stage:'Document Verification',papers:'Medical + Document Check',duration:'—',marks:'Qualifying'},
+    ],
+    cutoffs:[
+      {year:'2022 Cycle',general:'58',obc:'54',sc:'50',st:'46',ews:'56'},
+      {year:'2018 Cycle',general:'55',obc:'50',sc:'48',st:'44',ews:'N/A'},
+    ],
+    materials:[
+      {icon:'📖',title:'RRB Group D Guide',type:'Book','desc':'Arihant / Kiran'},
+      {icon:'📋',title:'Previous Papers',type:'PDF','desc':'All CBT papers'},
+    ],
+  },
+  {
+    id:'ibps_po',title:'IBPS Probationary Officer (PO)',
+    short:'IBPS PO',icon:'🏦',state:'Central',type:'central',
+    category:['banking','central'],
+    colorBg:'rgba(59,130,246,.15)',colorText:'#60a5fa',
+    conducting:'Institute of Banking Personnel Selection',
+    posts:'Probationary Officer / Management Trainee in 11 PSU Banks',
+    vacancies:'~4,000',
+    eligibility:'Any Graduate (20-30 yrs)',
+    mode:'Online CBT + Interview',
+    language:'English & Hindi',
+    status:'upcoming',
+    notification:'June 2025',
+    applyLast:'July 2025',
+    prelims:'Oct 2025',
+    mains:'Nov 2025',
+    interview:'Dec 2025–Jan 2026',
+    syllabus:{
+      'Prelims — English Language':['Reading Comprehension','Cloze Test','Parajumbles','Error Detection','Fill in Blanks'],
+      'Prelims — Quantitative Aptitude':['Data Interpretation','Quadratic Equation','Number Series','Simplification','Miscellaneous Arithmetic'],
+      'Prelims — Reasoning Ability':['Puzzles & Seating','Syllogism','Inequality','Coding-Decoding','Blood Relations','Input-Output','Direction Sense'],
+      'Mains — Reasoning & Computer':['Advanced Reasoning','Computer Awareness','Machine Input'],
+      'Mains — English Language':['RC','Grammar','Vocabulary','Essay Writing'],
+      'Mains — Data Analysis':['DI (Tables/Charts/Graphs)','Caselet DI','Arithmetic'],
+      'Mains — General/Economy/Banking Awareness':['Banking Awareness','Financial Awareness','Current Affairs'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'English 30Q + Quant 35Q + Reasoning 35Q = 100Q',duration:'20+20+20=60 min',marks:'100'},
+      {stage:'Mains',papers:'Reasoning+Computer 45Q + Eng 35Q + DI+Analysis 35Q + GA/Economy 40Q + Essay+Letter',duration:'4 hrs',marks:'200+25'},
+      {stage:'Interview',papers:'Personal Interview',duration:'~15 min',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'52.50 (Prelims)',obc:'50.75',sc:'45.25',st:'41.00',ews:'51.00'},
+      {year:'2022',general:'51.75',obc:'49.50',sc:'44.00',st:'40.25',ews:'50.25'},
+    ],
+    materials:[
+      {icon:'📖',title:'Oliveboard IBPS PO',type:'App','desc':'Mock tests'},
+      {icon:'📋',title:'Previous Papers',type:'PDF','desc':'All IBPS papers'},
+      {icon:'📘',title:'Arun Sharma Quant',type:'Book','desc':'Quantitative'},
+      {icon:'📙',title:'Plinth to Paramount',type:'Book','desc':'English grammar'},
+    ],
+  },
+  {
+    id:'nda',title:'NDA & NA Examination',
+    short:'NDA',icon:'⚔️',state:'Central',type:'central',
+    category:['defence','central'],
+    colorBg:'rgba(239,68,68,.15)',colorText:'#f87171',
+    conducting:'Union Public Service Commission',
+    posts:'Army, Navy & Air Force — Permanent Commission',
+    vacancies:'~400 (NDA I) + 400 (NDA II)',
+    eligibility:'12th Pass PCM for Navy/AF; Any stream for Army (16.5–19.5 yrs)',
+    mode:'Offline (Written) + SSB',
+    language:'English & Hindi',
+    status:'active',
+    notification:'Dec 2024 (NDA I) / May 2025 (NDA II)',
+    applyLast:'Jan 2025 / June 2025',
+    written:'April 2025 / Sept 2025',
+    ssb:'June–Sept 2025',
+    result:'Dec 2025',
+    syllabus:{
+      'Mathematics (300M)':['Algebra','Matrices & Determinants','Trigonometry','Analytical Geometry 2D&3D','Differential Calculus','Integral Calculus','Vector Algebra','Statistics & Probability'],
+      'GAT — English (200M)':['Grammar','Vocabulary','Comprehension','Composition'],
+      'GAT — General Knowledge (400M)':['Physics','Chemistry','General Science','History','Freedom Movement','Geography','Current Events'],
+    },
+    pattern:[
+      {stage:'Written — Mathematics',papers:'120 Questions',duration:'2.5 hrs',marks:'300'},
+      {stage:'Written — GAT',papers:'150 Questions',duration:'2.5 hrs',marks:'600'},
+      {stage:'SSB Interview',papers:'Psychological Tests + GTO + Interview + Conference',duration:'5 days',marks:'900'},
+    ],
+    cutoffs:[
+      {year:'2023 NDA II',general:'(Written) 360 / (Final) 699',obc:'—',sc:'—',st:'—',ews:'—'},
+      {year:'2022 NDA II',general:'355 / 695',obc:'—',sc:'—',st:'—',ews:'—'},
+    ],
+    materials:[
+      {icon:'📖',title:'Pathfinder NDA/NA',type:'Book','desc':'Arihant'},
+      {icon:'📋',title:'Previous 10 Years',type:'PDF','desc':'Solved papers'},
+      {icon:'🎥',title:'Study IQ Defence',type:'YouTube','desc':'Free videos'},
+    ],
+  },
+
+  // ─── ANDHRA PRADESH ───
+  {
+    id:'ap_group1',title:'APPSC Group I Services',
+    short:'APPSC Group 1',icon:'🏛️',state:'Andhra Pradesh',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Andhra Pradesh Public Service Commission',
+    posts:'Deputy Collector, DSP, Commercial Tax Officer, Regional Transport Officer, DVO, AEE (Civil)',
+    vacancies:'~120',
+    eligibility:'Any Degree (21-42 yrs)',
+    mode:'Offline (Written)',
+    language:'Telugu & English',
+    status:'upcoming',
+    notification:'Feb 2025',
+    applyLast:'March 2025',
+    prelims:'June 2025',
+    mains:'Oct 2025',
+    interview:'Dec 2025',
+    syllabus:{
+      'Paper I — History & Culture':['AP History','National Movement','Indian Culture','AP Festivals & Arts'],
+      'Paper II — Geography & Environment':['AP Geography','Rivers','Forests','Environment & Ecology'],
+      'Paper III — Indian Polity & Constitution':['Constitution','Governance','AP Reorganization Act','Panchayati Raj'],
+      'Paper IV — Economy':['Indian Economy','AP Economy','Development Programmes','Budget & Fiscal Policy'],
+      'Paper V — Science & Technology':['Physics / Chemistry / Bio basics','IT & Computers','Space Technology'],
+      'Paper VI — Current Affairs':['State & National Events','Awards','Sports','New Appointments'],
+    },
+    pattern:[
+      {stage:'Preliminary (Screening)',papers:'150Q MCQ — General Studies',duration:'150 min',marks:'150'},
+      {stage:'Main Exam',papers:'6 GS Papers + 1 Optional Paper',duration:'3 hrs each',marks:'1800'},
+      {stage:'Interview (Viva-Voce)',papers:'Personality Assessment',duration:'—',marks:'75'},
+    ],
+    cutoffs:[
+      {year:'2022–23',general:'Prelims: 85 / Mains: 925',obc:'81 / 890',sc:'77 / 855',st:'73 / 835',ews:'83 / 910'},
+      {year:'2020–21',general:'80 / 900',obc:'76 / 870',sc:'72 / 840',st:'68 / 820',ews:'N/A'},
+    ],
+    materials:[
+      {icon:'📖',title:'AP History — Shivaji',type:'Book','desc':'Telugu medium'},
+      {icon:'📋',title:'APPSC Previous Papers',type:'PDF','desc':'Group 1 papers'},
+      {icon:'🎥',title:'Mana TV / ETV',type:'YouTube','desc':'AP GS content'},
+    ],
+  },
+  {
+    id:'ap_police_si',title:'AP Police Sub-Inspector (SI)',
+    short:'AP Police SI',icon:'👮',state:'Andhra Pradesh',type:'state',
+    category:['police','state'],
+    colorBg:'rgba(239,68,68,.15)',colorText:'#f87171',
+    conducting:'SLPRB Andhra Pradesh',
+    posts:'Civil SI, AR SI, SRSP SI, SAR CPL, Fire Station Officer',
+    vacancies:'~700–1000',
+    eligibility:'Any Degree (21-30 yrs)',
+    mode:'Written + Physical + Oral',
+    language:'Telugu & English',
+    status:'active',
+    notification:'Nov 2024',
+    applyLast:'Dec 2024',
+    written:'March 2025',
+    physical:'May 2025',
+    oral:'July 2025',
+    syllabus:{
+      'Paper I — Telugu':['Grammar','Essay','Letter Writing','Comprehension'],
+      'Paper II — English':['Grammar','Comprehension','Composition'],
+      'Paper III — General Studies':['Polity','History','Geography','Economy','Science','Current Affairs'],
+      'Paper IV — Arithmetic & Test of Reasoning':['Number System','Algebra','Trigonometry','Geometry','Data Interpretation','Logical Reasoning'],
+      'Physical Test':['100m Sprint','800m Run','Long Jump','High Jump','Shotput'],
+    },
+    pattern:[
+      {stage:'Written Exam',papers:'Paper I (Telugu 100M) + Paper II (English 100M) + Paper III (GS 100M) + Paper IV (Maths/Reasoning 100M)',duration:'2 hrs each',marks:'400'},
+      {stage:'Physical Measurement',papers:'Height & Chest standards',duration:'—',marks:'Qualifying'},
+      {stage:'Physical Efficiency Test',papers:'Run, Jump, Shotput events',duration:'—',marks:'50'},
+      {stage:'Oral Test',papers:'Personality Assessment',duration:'—',marks:'50'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'310 (Written+PET+Oral)',obc:'295',sc:'280',st:'268',ews:'305'},
+      {year:'2019',general:'305',obc:'290',sc:'275',st:'262',ews:'N/A'},
+    ],
+    materials:[
+      {icon:'📖',title:'AP Police SI Guide',type:'Book','desc':'Sakshi / Eenadu'},
+      {icon:'📋',title:'SLPRB Previous Papers',type:'PDF','desc':'2015–2023'},
+    ],
+  },
+  {
+    id:'ap_tet',title:'AP TET (Teacher Eligibility Test)',
+    short:'AP TET',icon:'📚',state:'Andhra Pradesh',type:'state',
+    category:['teacher','state'],
+    colorBg:'rgba(245,158,11,.15)',colorText:'#fbbf24',
+    conducting:'APSCERT / School Education Dept, AP',
+    posts:'School Assistant (SA), Secondary Grade Teacher (SGT), Language Pandit, Physical Education Teacher',
+    vacancies:'Eligibility Certificate (No fixed vacancies)',
+    eligibility:'D.Ed / B.Ed / DEECET qualified',
+    mode:'OMR / Online',
+    language:'Telugu, English, Urdu',
+    status:'upcoming',
+    notification:'March 2025',
+    applyLast:'April 2025',
+    exam:'June–July 2025',
+    result:'Aug 2025',
+    syllabus:{
+      'Paper I (SGT — Classes 1–5)':['Child Development & Pedagogy','Language I (Telugu/Urdu)','Language II (English)','Mathematics — Content & Pedagogy','Environmental Studies — Content & Pedagogy'],
+      'Paper II (SA — Classes 6–8)':['Child Development & Pedagogy','Language I (Telugu/Urdu)','Language II (English)','Mathematics & Science OR Social Studies'],
+      'Child Development & Pedagogy':['Child Development Concepts','Learning & Pedagogy','Inclusive Education','Special Needs Children'],
+    },
+    pattern:[
+      {stage:'Paper I',papers:'150Q MCQ (30 each section)',duration:'150 min',marks:'150'},
+      {stage:'Paper II',papers:'150Q MCQ (30 each section)',duration:'150 min',marks:'150'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'90 / 150 (60%)',obc:'82',sc:'79',st:'75',ews:'87'},
+      {year:'2022',general:'90',obc:'82',sc:'79',st:'75',ews:'87'},
+    ],
+    materials:[
+      {icon:'📖',title:'AP TET Complete Guide',type:'Book','desc':'Sura Books'},
+      {icon:'📋',title:'AP TET Previous Papers',type:'PDF','desc':'2012–2023'},
+    ],
+  },
+
+  // ─── TELANGANA ───
+  {
+    id:'ts_group1',title:'TSPSC Group I Services',
+    short:'TSPSC Group 1',icon:'🏛️',state:'Telangana',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Telangana State Public Service Commission',
+    posts:'Deputy Collector, DSP, Commercial Tax Officer, DTO, AEE, DVO',
+    vacancies:'~503',
+    eligibility:'Any Degree (18-44 yrs)',
+    mode:'Written + Interview',
+    language:'Telugu, English, Urdu',
+    status:'active',
+    notification:'Oct 2022 (cycle 2022–23)',
+    applyLast:'Nov 2022',
+    prelims:'June 2023',
+    mains:'Dec 2023 – Jan 2024',
+    interview:'May 2025',
+    syllabus:{
+      'Paper I — History':['Telangana History','National Movement','Indian & Telangana Culture'],
+      'Paper II — Geography':['Telangana Geography','India Geography','Rivers & Forests'],
+      'Paper III — Indian Polity':['Constitution','Telangana Formation','Governance'],
+      'Paper IV — Economy':['Indian Economy','Telangana Economy','Welfare Schemes'],
+      'Paper V — Science & Technology':['Science Basics','IT & Space','Biotech'],
+      'Paper VI — Current Affairs':['TS State Events','National News','Sports & Culture'],
+    },
+    pattern:[
+      {stage:'Preliminary',papers:'150Q MCQ',duration:'150 min',marks:'150'},
+      {stage:'Main Exam',papers:'6 Papers x 150M = 900M',duration:'3 hrs each',marks:'900'},
+      {stage:'Interview',papers:'Personality Test',duration:'—',marks:'75'},
+    ],
+    cutoffs:[
+      {year:'2022–23 Prelims',general:'98',obc:'90',sc:'84',st:'79',ews:'95'},
+      {year:'2019',general:'94',obc:'86',sc:'80',st:'75',ews:'N/A'},
+    ],
+    materials:[
+      {icon:'📖',title:'TS History — Prabhas',type:'Book','desc':'Telangana specific'},
+      {icon:'📋',title:'TSPSC Previous Papers',type:'PDF','desc':'Group 1 papers'},
+    ],
+  },
+  {
+    id:'ts_police_si',title:'Telangana Police SI (SCT)',
+    short:'TS Police SI',icon:'👮',state:'Telangana',type:'state',
+    category:['police','state'],
+    colorBg:'rgba(239,68,68,.15)',colorText:'#f87171',
+    conducting:'TSLPRB — Telangana',
+    posts:'SCT SI (Civil), SCT SI (AR), SCT SI (TSSP)',
+    vacancies:'~700',
+    eligibility:'Any Degree (18-25 yrs — direct; up to 30 for excused categories)',
+    mode:'Written + Physical + Oral',
+    language:'Telugu, English',
+    status:'upcoming',
+    notification:'April 2025',
+    applyLast:'May 2025',
+    written:'July 2025',
+    physical:'Sept 2025',
+    syllabus:{
+      'Preliminary Written Test':['Mental Ability','Reasoning','English','Basic Math (10th level)'],
+      'Final Written Test (FWT)':['Telugu or Urdu','English','Arithmetic & Test of Reasoning','General Studies'],
+      'Physical Efficiency Test (PET)':['100m Sprint','800m Run','High Jump','Long Jump'],
+    },
+    pattern:[
+      {stage:'Preliminary Written Test',papers:'100 MCQ — Mixed',duration:'90 min',marks:'100'},
+      {stage:'Physical Measurement Test',papers:'Height/Chest/Weight',duration:'—',marks:'Qualifying'},
+      {stage:'Physical Efficiency Test',papers:'4 events',duration:'—',marks:'40'},
+      {stage:'Final Written Test',papers:'Paper I–IV (100M each)',duration:'2 hrs each',marks:'400'},
+      {stage:'Oral Test',papers:'Personality Assessment',duration:'—',marks:'40'},
+    ],
+    cutoffs:[
+      {year:'2023 (Final)',general:'340',obc:'320',sc:'305',st:'295',ews:'335'},
+    ],
+    materials:[
+      {icon:'📖',title:'TS Police SI Guide',type:'Book','desc':'Sakshi Publications'},
+      {icon:'📋',title:'TSLPRB Previous Papers',type:'PDF','desc':'2018–2023'},
+    ],
+  },
+  {
+    id:'ts_tet',title:'TS TET (Telangana Teacher Eligibility Test)',
+    short:'TS TET',icon:'📚',state:'Telangana',type:'state',
+    category:['teacher','state'],
+    colorBg:'rgba(245,158,11,.15)',colorText:'#fbbf24',
+    conducting:'TSCERT / TS School Education Dept',
+    posts:'SGT, SA (Language/Maths/Science/Social), Language Pandit, PET',
+    vacancies:'Eligibility Certificate',
+    eligibility:'D.Ed / B.Ed',
+    mode:'OMR',
+    language:'Telugu, English, Urdu',
+    status:'upcoming',
+    notification:'May 2025',
+    applyLast:'June 2025',
+    exam:'Aug 2025',
+    syllabus:{
+      'Paper I':['Child Development (30Q)','Language I: Telugu (30Q)','Language II: English (30Q)','Mathematics (30Q)','Environmental Studies (30Q)'],
+      'Paper II':['Child Development (30Q)','Language I: Telugu (30Q)','Language II: English (30Q)','Maths & Science OR Social (60Q)'],
+    },
+    pattern:[
+      {stage:'Paper I (SGT)',papers:'150 MCQ',duration:'150 min',marks:'150'},
+      {stage:'Paper II (SA)',papers:'150 MCQ',duration:'150 min',marks:'150'},
+    ],
+    cutoffs:[
+      {year:'2022',general:'90/150 (60%)',obc:'82',sc:'75',st:'70',ews:'87'},
+    ],
+    materials:[
+      {icon:'📖',title:'TS TET Guide',type:'Book','desc':'Neetu Singh'},
+      {icon:'📋',title:'TS TET Previous Papers',type:'PDF','desc':'2014–2022'},
+    ],
+  },
+
+  // ─── UTTAR PRADESH ───
+  {
+    id:'up_pcs',title:'UPPSC — UP PCS (Provincial Civil Services)',
+    short:'UPPSC PCS',icon:'🏛️',state:'Uttar Pradesh',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Uttar Pradesh Public Service Commission',
+    posts:'SDM, DSP, BDCO, Asst Commissioner Commercial Tax, Dy Jailor, Block Development Officer',
+    vacancies:'~400',
+    eligibility:'Any Degree (21-40 yrs)',
+    mode:'Written + Interview',
+    language:'Hindi & English',
+    status:'upcoming',
+    notification:'Feb 2025',
+    applyLast:'March 2025',
+    prelims:'May 2025',
+    mains:'Sept 2025',
+    interview:'Jan 2026',
+    syllabus:{
+      'Prelims — GS I':['Indian History','National Movement','World Geography','Indian Polity','Economy','Science','Current Affairs','Environment'],
+      'Prelims — CSAT':['Reading Comprehension','Communication Skills','Logical Reasoning','Analytical Ability','Decision Making','Basic Numeracy (Qualifying)'],
+      'Mains GS I':['Indian History','UP History','Indian Culture'],
+      'Mains GS II':['Indian Constitution & Polity','Social Justice'],
+      'Mains GS III':['Economic Development','Technology','Disaster Management'],
+      'Mains GS IV':['Ethics & Aptitude'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'GS I 150Q 200M + CSAT 100Q 200M (Qualifying)',duration:'2 hrs each',marks:'200'},
+      {stage:'Mains',papers:'GS I+II+III+IV (200M each) + Optional (2 papers 200M each) + Essay 150M + Hindi 150M (Qualifying)',duration:'3 hrs each',marks:'1500'},
+      {stage:'Interview',papers:'Personality Test',duration:'—',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'Prelims: 96 / Final: 818',obc:'91 / 792',sc:'86 / 775',st:'82 / 760',ews:'93 / 800'},
+    ],
+    materials:[
+      {icon:'📖',title:'UP GK — Lucent',type:'Book','desc':'UP specific'},
+      {icon:'📋',title:'UPPSC Previous Papers',type:'PDF','desc':'PCS papers'},
+    ],
+  },
+  {
+    id:'up_police',title:'UP Police Constable',
+    short:'UP Police Constable',icon:'👮',state:'Uttar Pradesh',type:'state',
+    category:['police','state'],
+    colorBg:'rgba(239,68,68,.15)',colorText:'#f87171',
+    conducting:'UP Police Recruitment & Promotion Board (UPPRPB)',
+    posts:'Constable (Civil Police, PAC, FIRE)',
+    vacancies:'~60,244',
+    eligibility:'12th Pass (18-22 yrs)',
+    mode:'Written + Physical',
+    language:'Hindi',
+    status:'active',
+    notification:'Dec 2023',
+    applyLast:'Feb 2024',
+    written:'June–July 2024',
+    physical:'Oct 2024',
+    result:'Dec 2024',
+    syllabus:{
+      'General Hindi':['Grammar','Comprehension','Idioms','Synonyms/Antonyms'],
+      'General Knowledge':['Polity','History','Geography','Economy','Science','UP State GK'],
+      'Numerical Ability':['Number System','Simplification','DI','Mensuration'],
+      'Mental Aptitude / IQ / Reasoning':['Series','Directions','Coding','Blood Relations','Analogies'],
+    },
+    pattern:[
+      {stage:'Written Exam',papers:'150Q MCQ (Hindi 37.5M + GK 37.5M + Num Ability 37.5M + Reasoning 37.5M)',duration:'120 min',marks:'300'},
+      {stage:'Physical Standard Test',papers:'Height/Weight/Chest Measurement',duration:'—',marks:'Qualifying'},
+      {stage:'Physical Efficiency Test',papers:'Male: 4.8km/25min; Female: 2.4km/14min',duration:'—',marks:'Qualifying'},
+      {stage:'Medical Examination',papers:'Medical fitness',duration:'—',marks:'Qualifying'},
+    ],
+    cutoffs:[
+      {year:'2024 (Written)',general:'220',obc:'210',sc:'200',st:'192',ews:'215'},
+      {year:'2019',general:'275',obc:'260',sc:'245',st:'232',ews:'N/A'},
+    ],
+    materials:[
+      {icon:'📖',title:'UP Police Constable Guide',type:'Book','desc':'Arihant / Kiran'},
+      {icon:'📋',title:'UPPRPB Previous Papers',type:'PDF','desc':'2014–2024'},
+    ],
+  },
+
+  // ─── MAHARASHTRA ───
+  {
+    id:'mh_psc',title:'MPSC State Service Examination',
+    short:'MPSC State Service',icon:'🏛️',state:'Maharashtra',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Maharashtra Public Service Commission',
+    posts:'Deputy Collector, Deputy SP, Tax Assistant Commissioner, Sales Tax Inspector, State Tax Inspector',
+    vacancies:'~400',
+    eligibility:'Any Degree (19-38 yrs)',
+    mode:'Written + Interview',
+    language:'Marathi & English',
+    status:'upcoming',
+    notification:'March 2025',
+    applyLast:'April 2025',
+    prelims:'Aug 2025',
+    mains:'Dec 2025',
+    syllabus:{
+      'Prelims — GS':['History (Maharashtra & India)','Geography (Maharashtra & India)','Polity','Economy','Science','Current Affairs'],
+      'Prelims — CSAT':['Reading Comprehension','Logical Reasoning','Quantitative Aptitude (Qualifying)'],
+      'Mains Paper I':['Marathi & English Language'],
+      'Mains Paper II':['History & Heritage of India & Maharashtra'],
+      'Mains Paper III':['Geography & Disaster Management'],
+      'Mains Paper IV':['Indian Constitution, Polity & Law'],
+      'Mains Paper V':['Economic Development','Agriculture','Science & Tech'],
+      'Mains Paper VI':['Ethics, Integrity & Aptitude'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'GS 100Q 200M + CSAT 80Q 200M (Qualifying)',duration:'2 hrs each',marks:'200'},
+      {stage:'Mains',papers:'6 GS Papers + Marathi/English',duration:'3 hrs each',marks:'1300'},
+      {stage:'Interview',papers:'Personality Test',duration:'—',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'Prelims: 102 / Final: 780',obc:'95 / 754',sc:'89 / 730',st:'84 / 715',ews:'99 / 765'},
+    ],
+    materials:[
+      {icon:'📖',title:'Marathi Rajyaseva Guide',type:'Book','desc':'Unique Publications'},
+      {icon:'📋',title:'MPSC Previous Papers',type:'PDF','desc':'State Service papers'},
+    ],
+  },
+  {
+    id:'mh_police',title:'Maharashtra Police Constable',
+    short:'MH Police Constable',icon:'👮',state:'Maharashtra',type:'state',
+    category:['police','state'],
+    colorBg:'rgba(239,68,68,.15)',colorText:'#f87171',
+    conducting:'Maharashtra Police Recruitment Board',
+    posts:'Police Constable (Armed & Unarmed)',
+    vacancies:'~17,000',
+    eligibility:'12th Pass (18-28 yrs)',
+    mode:'Written + Physical',
+    language:'Marathi & English',
+    status:'upcoming',
+    notification:'Feb 2025',
+    applyLast:'March 2025',
+    exam:'May–June 2025',
+    syllabus:{
+      'Marathi':['Grammar','Comprehension'],
+      'English':['Grammar','Basic Vocabulary'],
+      'General Knowledge':['Maharashtra GK','India GK','Current Affairs'],
+      'Arithmetic':['Basic Maths 10th level'],
+    },
+    pattern:[
+      {stage:'Written Exam',papers:'100Q MCQ',duration:'90 min',marks:'100'},
+      {stage:'Physical Test',papers:'Run + Physical Measurement',duration:'—',marks:'Qualifying'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'68',obc:'63',sc:'58',st:'54',ews:'66'},
+    ],
+    materials:[
+      {icon:'📖',title:'MH Police Constable Guide',type:'Book','desc':'Marathi Medium'},
+    ],
+  },
+
+  // ─── RAJASTHAN ───
+  {
+    id:'rpsc_ras',title:'RPSC — RAS/RTS (Rajasthan Administrative Service)',
+    short:'RPSC RAS',icon:'🏛️',state:'Rajasthan',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Rajasthan Public Service Commission',
+    posts:'RAS Officer, Sub-Divisional Magistrate, Block Development Officer, Deputy SP, Tax Officer',
+    vacancies:'~900',
+    eligibility:'Any Degree (21-40 yrs)',
+    mode:'Written + Interview',
+    language:'Hindi & English',
+    status:'upcoming',
+    notification:'Jan 2025',
+    applyLast:'Feb 2025',
+    prelims:'May 2025',
+    mains:'Sept 2025',
+    syllabus:{
+      'Prelims GS':['History (India & Rajasthan)','Art & Culture','Geography','Economy','Polity','Science','Current Affairs','Environment & Ecology','Rajasthan GK'],
+      'Mains Paper I':['History & Culture of Rajasthan','India & World History'],
+      'Mains Paper II':['Indian Constitution, Polity, Social Justice & International Relations'],
+      'Mains Paper III':['Economy & Agriculture'],
+      'Mains Paper IV':['General Science & Technology'],
+      'Mains Paper V':['General Hindi & English'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'200Q 200M',duration:'3 hrs',marks:'200'},
+      {stage:'Mains',papers:'Paper I–IV (200M each) + Gn Hindi 200M + Gn English 100M (Qualifying)',duration:'3 hrs each',marks:'800'},
+      {stage:'Interview',papers:'Personality Test',duration:'—',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'Prelims: 105 / Final: 625',obc:'99 / 602',sc:'93 / 585',st:'88 / 572',ews:'102 / 615'},
+    ],
+    materials:[
+      {icon:'📖',title:'Rajasthan GK — Kiran',type:'Book','desc':'Rajasthan specific'},
+      {icon:'📋',title:'RPSC Previous Papers',type:'PDF','desc':'RAS papers'},
+    ],
+  },
+  {
+    id:'raj_police',title:'Rajasthan Police Constable',
+    short:'Raj Police Constable',icon:'👮',state:'Rajasthan',type:'state',
+    category:['police','state'],
+    colorBg:'rgba(239,68,68,.15)',colorText:'#f87171',
+    conducting:'Rajasthan Police',
+    posts:'Police Constable (General & Telecommunication)',
+    vacancies:'~4,588',
+    eligibility:'10+2 (18-23 yrs)',
+    mode:'Written + Physical',
+    language:'Hindi',
+    status:'active',
+    notification:'Nov 2024',
+    applyLast:'Dec 2024',
+    exam:'March–April 2025',
+    syllabus:{
+      'Reasoning & Computer':['Logical Reasoning','Computer Basics'],
+      'General Knowledge':['Rajasthan GK','India GK','Current Affairs'],
+      'Hindi':['Grammar','Comprehension'],
+      'Science & Maths':['10th level Science','Basic Maths'],
+    },
+    pattern:[
+      {stage:'Written Exam',papers:'150Q MCQ',duration:'120 min',marks:'150'},
+      {stage:'Physical Test',papers:'5km Run (Male) / 2.5km (Female) + Measurements',duration:'—',marks:'Qualifying'},
+    ],
+    cutoffs:[
+      {year:'2022',general:'76',obc:'70',sc:'66',st:'61',ews:'74'},
+    ],
+    materials:[
+      {icon:'📖',title:'Raj Police Constable Guide',type:'Book','desc':'Hindi Medium'},
+    ],
+  },
+
+  // ─── TAMIL NADU ───
+  {
+    id:'tnpsc_group1',title:'TNPSC Group I (Combined Civil Services I)',
+    short:'TNPSC Group 1',icon:'🏛️',state:'Tamil Nadu',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Tamil Nadu Public Service Commission',
+    posts:'Deputy Collector, Deputy SP, DCTO, AEE, Block Development Officer',
+    vacancies:'~69',
+    eligibility:'Any Degree (21-37 yrs)',
+    mode:'Written + Interview',
+    language:'Tamil & English',
+    status:'active',
+    notification:'Oct 2024',
+    applyLast:'Nov 2024',
+    prelims:'March 2025',
+    mains:'July 2025',
+    interview:'Oct 2025',
+    syllabus:{
+      'Prelims (General Studies)':['General Science','Current Events','Geography','History','Polity & Economy','Aptitude & Mental Ability Tests'],
+      'Mains Paper I':['General Essay'],
+      'Mains Paper II':['General Studies (Indian Economy, Planning, Polity, History, Geography)'],
+      'Mains Paper III':['General Studies (Social Issues, Environment, Science & Technology)'],
+      'Mains Paper IV':['Language (Tamil or English)'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'200Q 300M (GS + Aptitude combined)',duration:'3 hrs',marks:'300'},
+      {stage:'Mains',papers:'Paper I: Essay 250M + Paper II: GS 250M + Paper III: GS 250M + Paper IV: Language 100M',duration:'3 hrs each',marks:'850'},
+      {stage:'Interview',papers:'Personality Assessment',duration:'—',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2022',general:'Prelims: 155 / Final: 645',obc:'148 / 620',sc:'140 / 600',st:'132 / 585',ews:'152 / 632'},
+    ],
+    materials:[
+      {icon:'📖',title:'TNPSC Group I Guide',type:'Book','desc':'Sura / Suras Books'},
+      {icon:'📋',title:'TNPSC Previous Papers',type:'PDF','desc':'2010–2024'},
+    ],
+  },
+  {
+    id:'tn_police_pc',title:'Tamil Nadu Police Constable (SLPC)',
+    short:'TN Police Constable',icon:'👮',state:'Tamil Nadu',type:'state',
+    category:['police','state'],
+    colorBg:'rgba(239,68,68,.15)',colorText:'#f87171',
+    conducting:'Tamil Nadu Uniformed Services Recruitment Board (MRB/TNUSRB)',
+    posts:'Grade II Police Constable (Armed Reserve)',
+    vacancies:'~6,000+',
+    eligibility:'10+2 (18-25 yrs)',
+    mode:'Written + Physical',
+    language:'Tamil',
+    status:'upcoming',
+    notification:'April 2025',
+    applyLast:'May 2025',
+    exam:'July 2025',
+    syllabus:{
+      'Written Test':['General Knowledge & Current Events','General Tamil / General English','Aptitude & Mental Ability','General Science'],
+      'Physical Standards Test':['Height, Weight, Chest Measurement'],
+      'Physical Endurance Test':['1500m Run','Rope Climbing','High Jump','Long Jump','Shot Put'],
+    },
+    pattern:[
+      {stage:'Written Exam',papers:'100Q 100M',duration:'90 min',marks:'100'},
+      {stage:'Physical Standards Test',papers:'Measurement',duration:'—',marks:'Qualifying'},
+      {stage:'Physical Endurance Test',papers:'5 events',duration:'—',marks:'Qualifying / Graded'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'63',obc:'58',sc:'54',st:'50',ews:'61'},
+    ],
+    materials:[
+      {icon:'📖',title:'TN Police PC Guide',type:'Book','desc':'Tamil Medium'},
+    ],
+  },
+  {
+    id:'tn_tet',title:'TN TET (Tamil Nadu Teacher Eligibility Test)',
+    short:'TN TET',icon:'📚',state:'Tamil Nadu',type:'state',
+    category:['teacher','state'],
+    colorBg:'rgba(245,158,11,.15)',colorText:'#fbbf24',
+    conducting:'TNTET — Teacher Recruitment Board (TRB)',
+    posts:'Primary Teacher (Paper I), Graduate Teacher / B.T. Asst (Paper II)',
+    vacancies:'Eligibility Certificate',
+    eligibility:'D.Ed (Paper I) / B.Ed (Paper II)',
+    mode:'OMR / Online',
+    language:'Tamil & English',
+    status:'upcoming',
+    notification:'March 2025',
+    applyLast:'April 2025',
+    exam:'June 2025',
+    syllabus:{
+      'Paper I':['Child Development & Pedagogy (30Q)','Language I — Tamil (30Q)','Language II — English (30Q)','Mathematics (30Q)','Environmental Studies (30Q)'],
+      'Paper II':['Child Development & Pedagogy (30Q)','Language I — Tamil (30Q)','Language II — English (30Q)','Subject-specific: Maths-Science OR Social Science (60Q)'],
+    },
+    pattern:[
+      {stage:'Paper I',papers:'150 MCQ',duration:'150 min',marks:'150'},
+      {stage:'Paper II',papers:'150 MCQ',duration:'150 min',marks:'150'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'90 (60%)',obc:'82',sc:'75',st:'75',ews:'87'},
+    ],
+    materials:[
+      {icon:'📖',title:'TN TET Guide',type:'Book','desc':'Sura Books Tamil'},
+    ],
+  },
+
+  // ─── KARNATAKA ───
+  {
+    id:'kpsc_kas',title:'KPSC — KAS (Karnataka Administrative Service)',
+    short:'KPSC KAS',icon:'🏛️',state:'Karnataka',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Karnataka Public Service Commission',
+    posts:'Gazetted Probationers: Group A & B — Tahsildar, PDO, AEE, Asst Director, Inspector',
+    vacancies:'~400',
+    eligibility:'Any Degree (21-35 yrs)',
+    mode:'Written + Interview',
+    language:'Kannada & English',
+    status:'upcoming',
+    notification:'Feb 2025',
+    applyLast:'March 2025',
+    prelims:'June 2025',
+    mains:'Oct 2025',
+    syllabus:{
+      'Prelims':['Kannada','English','General Studies','General Mental Ability'],
+      'Mains GS I':['History of India & Karnataka','Geography of India & Karnataka'],
+      'Mains GS II':['Indian Constitution','Polity','Social Justice'],
+      'Mains GS III':['Economy','Technology','Environment'],
+      'Mains GS IV':['Ethics & Integrity'],
+      'Mains — Kannada & English':['Language Papers'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'100Q 100M (GS+Kannada+English+Aptitude)',duration:'90 min',marks:'100'},
+      {stage:'Mains',papers:'GS I–IV (150M each) + Kannada 150M + English 100M + Optional (Two papers)',duration:'3 hrs each',marks:'~1200'},
+      {stage:'Interview',papers:'Personality Test',duration:'—',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2022',general:'Prelims: 52 / Final: 635',obc:'47 / 608',sc:'44 / 590',st:'41 / 578',ews:'50 / 625'},
+    ],
+    materials:[
+      {icon:'📖',title:'KAS Guide — Unique Publications',type:'Book','desc':'Kannada Medium'},
+      {icon:'📋',title:'KPSC Previous Papers',type:'PDF','desc':'KAS papers'},
+    ],
+  },
+  {
+    id:'kar_police',title:'Karnataka Police Constable (PCR)',
+    short:'KAR Police Constable',icon:'👮',state:'Karnataka',type:'state',
+    category:['police','state'],
+    colorBg:'rgba(239,68,68,.15)',colorText:'#f87171',
+    conducting:'Karnataka State Police (Recruitment Cell)',
+    posts:'Police Constable (Civil), Armed Reserve Constable, Women Police Constable',
+    vacancies:'~4,000',
+    eligibility:'SSLC/10th (18-25 yrs)',
+    mode:'Written + Physical',
+    language:'Kannada',
+    status:'active',
+    notification:'Jan 2025',
+    applyLast:'Feb 2025',
+    exam:'April 2025',
+    syllabus:{
+      'Written Test':['Kannada Language & General Knowledge','Reasoning & Mental Ability','General Science & Current Affairs'],
+      'Physical Standard Test':['Height / Chest Measurement'],
+      'Physical Efficiency Test':['1500m Run / 800m Run (Female)','Shot Put','Long Jump'],
+    },
+    pattern:[
+      {stage:'Written Exam',papers:'100Q 100M',duration:'90 min',marks:'100'},
+      {stage:'PST + PET',papers:'Physical events',duration:'—',marks:'Qualifying'},
+    ],
+    cutoffs:[
+      {year:'2021',general:'56',obc:'51',sc:'47',st:'43',ews:'54'},
+    ],
+    materials:[
+      {icon:'📖',title:'KAR Police Constable Guide',type:'Book','desc':'Kannada Medium'},
+    ],
+  },
+
+  // ─── KERALA ───
+  {
+    id:'kerala_psc_deg',title:'Kerala PSC Degree Level Examinations',
+    short:'Kerala PSC Degree Level',icon:'🏛️',state:'Kerala',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Kerala Public Service Commission',
+    posts:'Civil Excise Officer, Junior Employment Officer, Sub-Inspector of Co-op Societies, Village Field Asst, Lower Division Clerk',
+    vacancies:'Varies (multiple notifications per year)',
+    eligibility:'Degree (varies by post, 18-36 yrs)',
+    mode:'OMR + Online (CBT)',
+    language:'Malayalam & English',
+    status:'active',
+    notification:'Quarterly Notifications',
+    applyLast:'Rolling',
+    exam:'Scheduled monthly',
+    syllabus:{
+      'Main Topics':['General Knowledge & Current Affairs','Renaissance of Kerala & Social Movements','Indian Constitution & Polity','Basic Science','Quantitative Aptitude','Mental Ability'],
+      'Subject-Specific (by post)':['Each post has tailored syllabus','Usually 70 marks GK + 30 marks Subject-specific or Aptitude'],
+    },
+    pattern:[
+      {stage:'Main Exam (OMR)',papers:'100Q 100M — GK + Aptitude + Subject',duration:'75 min',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2024 (Civil Excise)',general:'80',obc:'75',sc:'70',st:'65',ews:'78'},
+    ],
+    materials:[
+      {icon:'📖',title:'Kerala PSC Guide — DC Books',type:'Book','desc':'Malayalam Medium'},
+      {icon:'📋',title:'KPSC Previous Papers',type:'PDF','desc':'All degree-level'},
+    ],
+  },
+
+  // ─── WEST BENGAL ───
+  {
+    id:'wbcs',title:'WBCS (West Bengal Civil Service)',
+    short:'WBCS',icon:'🏛️',state:'West Bengal',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'West Bengal Public Service Commission (WBPSC)',
+    posts:'WBCS (Exe) — Deputy Magistrate, Block Development Officer; Group B: Sub-Inspector of Schools, Inspectors; Group C & D: Clerks',
+    vacancies:'~400',
+    eligibility:'Any Degree (21-36 yrs)',
+    mode:'Written + Interview',
+    language:'Bengali & English',
+    status:'upcoming',
+    notification:'March 2025',
+    applyLast:'April 2025',
+    prelims:'July 2025',
+    mains:'Oct 2025',
+    syllabus:{
+      'Prelims':['English Composition','General Studies','Arithmetic & Test of Reasoning','General Science'],
+      'Mains — Bengali/Hindi/Urdu/Nepali/Santali':['Language Paper'],
+      'Mains — English':['Essay, Précis, Drafting'],
+      'Mains — GS I':['Indian History, Bengali History, World History'],
+      'Mains — GS II':['Geography + Environment'],
+      'Mains — GS III':['Indian Polity + Constitutional Development'],
+      'Mains — GS IV':['Economy + Science & Technology'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'200Q 200M',duration:'2.5 hrs',marks:'200'},
+      {stage:'Mains',papers:'Language + English + GS I–IV + Optional (Arith or Subject)',duration:'3 hrs each',marks:'1400'},
+      {stage:'Interview',papers:'Personality Test',duration:'—',marks:'200'},
+    ],
+    cutoffs:[
+      {year:'2022',general:'Prelims: 105 / Final: 775',obc:'99 / 748',sc:'93 / 726',st:'88 / 710',ews:'102 / 760'},
+    ],
+    materials:[
+      {icon:'📖',title:'WBCS Guide — M.K. Publishers',type:'Book','desc':'Bengali Medium'},
+    ],
+  },
+
+  // ─── GUJARAT ───
+  {
+    id:'gpsc_cse',title:'GPSC (Gujarat Public Service Commission) Class I-II',
+    short:'GPSC Class I-II',icon:'🏛️',state:'Gujarat',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Gujarat Public Service Commission',
+    posts:'Deputy Collector, Deputy SP, Commercial Tax Officer, City Town Planner, Asst Conservator of Forests',
+    vacancies:'~350',
+    eligibility:'Any Degree (21-35 yrs)',
+    mode:'Written + Interview',
+    language:'Gujarati & English',
+    status:'upcoming',
+    notification:'Feb 2025',
+    applyLast:'March 2025',
+    prelims:'May 2025',
+    mains:'Sept 2025',
+    syllabus:{
+      'Prelims':['History of India & Gujarat','Geography of India & Gujarat','Indian Constitution & Polity','Indian Economy & Gujarat Economy','Science & Technology','Current Affairs','Environment & Ecology','Mental Ability'],
+      'Mains':['Language Paper (Gujarati+English)','GS I — History & Geography','GS II — Polity & Governance','GS III — Economy & Environment','GS IV — Ethics','Optional (Two papers)'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'200Q 200M',duration:'2 hrs',marks:'200'},
+      {stage:'Mains',papers:'Language + GS I–IV + Optional',duration:'3 hrs each',marks:'~1400'},
+      {stage:'Interview',papers:'Personality Test',duration:'—',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2022',general:'Prelims: 112 / Final: 680',obc:'106 / 658',sc:'100 / 638',st:'95 / 622',ews:'110 / 670'},
+    ],
+    materials:[
+      {icon:'📖',title:'GPSC Guide — Vikas Publishers',type:'Book','desc':'Gujarati Medium'},
+    ],
+  },
+
+  // ─── PUNJAB ───
+  {
+    id:'ppsc',title:'PPSC Punjab Civil Services',
+    short:'PPSC',icon:'🏛️',state:'Punjab',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Punjab Public Service Commission',
+    posts:'PCS Officers: Block Development & Panchayat Officer, Deputy SP, Excise & Taxation Inspector',
+    vacancies:'~300',
+    eligibility:'Any Degree (21-37 yrs)',
+    mode:'Written + Interview',
+    language:'Punjabi, Hindi & English',
+    status:'upcoming',
+    notification:'Jan 2025',
+    applyLast:'Feb 2025',
+    prelims:'April 2025',
+    mains:'Aug 2025',
+    syllabus:{
+      'Prelims':['General Studies','Mental Ability Test','Reasoning','English Comprehension','Punjab Current Affairs','Punjab History & Culture'],
+      'Mains':['Punjabi Language','English Language','General Studies I','General Studies II','Essay','Optional Subject'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'120Q 120M',duration:'2 hrs',marks:'120'},
+      {stage:'Mains',papers:'Language + GS I+II + Essay + Optional',duration:'3 hrs each',marks:'1100'},
+      {stage:'Interview',papers:'—',duration:'—',marks:'100'},
+    ],
+    cutoffs:[
+      {year:'2022',general:'Prelims: 65 / Final: 595',obc:'60 / 572',sc:'55 / 555',st:'51 / 541',ews:'63 / 585'},
+    ],
+    materials:[
+      {icon:'📖',title:'PPSC Guide — Bright Publishers',type:'Book','desc':'Hindi/Punjabi Medium'},
+    ],
+  },
+
+  // ─── JHARKHAND ───
+  {
+    id:'jpsc',title:'JPSC Civil Services (Jharkhand PSC)',
+    short:'JPSC',icon:'🏛️',state:'Jharkhand',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Jharkhand Public Service Commission',
+    posts:'Deputy Collector, Deputy SP, Treasury Officer, Block Development Officer',
+    vacancies:'~340',
+    eligibility:'Any Degree (21-35 yrs)',
+    mode:'Written + Interview',
+    language:'Hindi & English',
+    status:'active',
+    notification:'Oct 2024',
+    applyLast:'Nov 2024',
+    prelims:'Feb 2025',
+    mains:'June 2025',
+    syllabus:{
+      'Prelims':['General Studies','General Science','Jharkhand GK','History','Geography','Economy','Current Affairs'],
+      'Mains':['Jharkhand: History, Culture, Society','National/International Importance','Governance & Tribal Movements','Economy & Regional Development','GS Papers I–III','Language Papers','Optional'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'120Q',duration:'2 hrs',marks:'120'},
+      {stage:'Mains',papers:'Language + GS I–III + Optional',duration:'3 hrs each',marks:'~1000'},
+      {stage:'Interview',papers:'—',duration:'—',marks:'75'},
+    ],
+    cutoffs:[
+      {year:'2021',general:'Prelims: 59 / Final: 540',obc:'54 / 515',sc:'50 / 498',st:'46 / 485',ews:'57 / 530'},
+    ],
+    materials:[
+      {icon:'📖',title:'Jharkhand GK Guide',type:'Book','desc':'Jharkhand specific'},
+    ],
+  },
+
+  // ─── MADHYA PRADESH ───
+  {
+    id:'mppsc',title:'MPPSC State Service Exam (MP)',
+    short:'MPPSC SSE',icon:'🏛️',state:'Madhya Pradesh',type:'state',
+    category:['state','group'],
+    colorBg:'rgba(139,92,246,.15)',colorText:'#a78bfa',
+    conducting:'Madhya Pradesh Public Service Commission',
+    posts:'Deputy Collector, Deputy SP, Commercial Tax Officer, Block Development Officer, Nayab Tehsildar',
+    vacancies:'~500',
+    eligibility:'Any Degree (21-40 yrs)',
+    mode:'Written + Interview',
+    language:'Hindi & English',
+    status:'upcoming',
+    notification:'Dec 2024',
+    applyLast:'Jan 2025',
+    prelims:'April 2025',
+    mains:'Aug 2025',
+    syllabus:{
+      'Prelims — GS':['Science & Technology','Social Science','India & MP Economy','History','Geography','MP GK','Polity & Governance'],
+      'Mains Paper I':['History, Culture, Literature of MP'],
+      'Mains Paper II':['Geography, Ecology of MP & India'],
+      'Mains Paper III':['Constitution, Government & Economy'],
+      'Mains Paper IV':['Science, Technology & Cyber Security'],
+      'Mains Paper V':['Current Events & Sports'],
+      'Mains Paper VI':['Hindi Language'],
+      'Mains Paper VII':['Hindi Essay'],
+    },
+    pattern:[
+      {stage:'Prelims',papers:'100Q 200M',duration:'2 hrs',marks:'200'},
+      {stage:'Mains',papers:'Paper I–VII',duration:'3 hrs each',marks:'1400'},
+      {stage:'Interview',papers:'—',duration:'—',marks:'175'},
+    ],
+    cutoffs:[
+      {year:'2023',general:'Prelims: 108 / Final: 785',obc:'102 / 762',sc:'96 / 742',st:'91 / 726',ews:'105 / 774'},
+    ],
+    materials:[
+      {icon:'📖',title:'MP GK Samanya Gyan',type:'Book','desc':'Hindi Medium'},
+    ],
+  },
+];
+
+/* ═══════════════════════════════════════════════
+   STATE / FILTER
+═══════════════════════════════════════════════ */
+let activeFilter = 'all';
+let activeCategory = 'all';
+let searchQuery = '';
+
+const states = ['Central','Andhra Pradesh','Telangana','Uttar Pradesh','Maharashtra','Rajasthan','Tamil Nadu','Karnataka','Kerala','West Bengal','Gujarat','Punjab','Jharkhand','Madhya Pradesh'];
+
+function init(){
+  // Notifications ticker
+  document.getElementById('notifText').textContent = notifications.join('  ');
+
+  // Quick links
+  const ql = document.getElementById('quickLinks');
+  categories.forEach(c=>{
+    ql.innerHTML += `<div class="quick-card" onclick="setCategory('${c.id}')">
+      <div class="quick-icon">${c.icon}</div>
+      <div class="quick-label">${c.label}</div>
+    </div>`;
+  });
+
+  // Filter chips
+  const fc = document.getElementById('filterChips');
+  // Central filter
+  fc.innerHTML += `<span class="chip central ${activeFilter==='Central'?'active':''}" onclick="setFilter('Central')">🇮🇳 Central</span>`;
+  // State filters
+  states.filter(s=>s!=='Central').forEach(s=>{
+    fc.innerHTML += `<span class="chip" onclick="setFilter('${s}')">${s}</span>`;
+  });
+  // All
+  fc.innerHTML = `<span class="chip ${activeFilter==='all'?'active':''}" onclick="setFilter('all')">All States</span>` + fc.innerHTML;
+
+  renderGrid();
+}
+
+function setFilter(f){
+  activeFilter = f;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  event.target.classList.add('active');
+  renderGrid();
+}
+
+function setCategory(c){
+  activeCategory = c;
+  renderGrid();
+  document.getElementById('examGrid').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function filterExams(){
+  searchQuery = document.getElementById('searchInput').value.toLowerCase();
+  renderGrid();
+}
+
+function renderGrid(){
+  const grid = document.getElementById('examGrid');
+  const title = document.getElementById('gridTitle');
+  let exams = EXAMS;
+
+  // State filter
+  if(activeFilter !== 'all'){
+    exams = exams.filter(e=>e.state === activeFilter);
+  }
+  // Category filter
+  if(activeCategory !== 'all'){
+    exams = exams.filter(e=>e.category.includes(activeCategory));
+  }
+  // Search
+  if(searchQuery){
+    exams = exams.filter(e=>
+      e.title.toLowerCase().includes(searchQuery) ||
+      e.short.toLowerCase().includes(searchQuery) ||
+      e.state.toLowerCase().includes(searchQuery) ||
+      e.conducting.toLowerCase().includes(searchQuery) ||
+      e.posts.toLowerCase().includes(searchQuery)
+    );
+  }
+
+  // Update title
+  let tl = 'All Government Exams';
+  if(activeFilter!=='all') tl = `${activeFilter} Exams`;
+  if(activeCategory!=='all'){
+    const cat = categories.find(c=>c.id===activeCategory);
+    tl = (cat?cat.label+' ':'')+tl;
+  }
+  title.textContent = `${tl} (${exams.length})`;
+
+  if(exams.length === 0){
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1">
+      <div class="empty-icon">🔍</div>
+      <h3>No exams found</h3>
+      <p>Try changing filters or search query</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = exams.map(e=>{
+    const typeTag = e.type==='central'
+      ? `<span class="tag tag-central">Central</span>`
+      : `<span class="tag tag-state">${e.state}</span>`;
+
+    let catTags = '';
+    if(e.category.includes('railway')) catTags+=`<span class="tag tag-rail">Railway</span>`;
+    if(e.category.includes('police')) catTags+=`<span class="tag tag-police">Police</span>`;
+    if(e.category.includes('teacher')) catTags+=`<span class="tag tag-teach">Teaching</span>`;
+    if(e.category.includes('upsc')) catTags+=`<span class="tag tag-upsc">UPSC</span>`;
+    if(e.category.includes('banking')) catTags+=`<span class="tag tag-group">Banking</span>`;
+    if(e.category.includes('defence')) catTags+=`<span class="tag tag-police">Defence</span>`;
+    if(e.category.includes('group')) catTags+=`<span class="tag tag-group">Group Exam</span>`;
+
+    const statusClass = `status-${e.status}`;
+    const statusLabel = e.status==='active'?'🟢 Active':e.status==='upcoming'?'🟡 Upcoming':'⚫ Closed';
+
+    return `<div class="exam-card" onclick="openModal('${e.id}')">
+      <div class="card-head">
+        <div class="card-icon" style="background:${e.colorBg}">${e.icon}</div>
+        <div>
+          <div class="card-title">${e.title}</div>
+          <div class="card-sub">${e.conducting}</div>
+        </div>
+      </div>
+      <div class="card-tags">${typeTag}${catTags}</div>
+      <div class="card-body">
+        <div class="info-row"><span>Posts</span>${e.posts.length>60?e.posts.substring(0,60)+'…':e.posts}</div>
+        <div class="info-row"><span>Vacancies</span>${e.vacancies}</div>
+        <div class="info-row"><span>Eligibility</span>${e.eligibility}</div>
+        <div class="info-row"><span>Mode</span>${e.mode}</div>
+      </div>
+      <div class="card-footer">
+        <span class="status-badge ${statusClass}">${statusLabel}</span>
+        <button class="view-btn">View Details →</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ═══════════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════════ */
+function openModal(id){
+  const e = EXAMS.find(x=>x.id===id);
+  if(!e) return;
+
+  // Header
+  document.getElementById('modalHeader').innerHTML = `
+    <div class="modal-icon" style="background:${e.colorBg}">${e.icon}</div>
+    <div>
+      <div class="modal-title">${e.title}</div>
+      <div class="modal-sub">${e.conducting} &nbsp;|&nbsp; ${e.state}</div>
+    </div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+  `;
+
+  // Tabs
+  const tabs = ['Overview','Syllabus','Exam Pattern','Timeline','Cut-offs','Study Material'];
+  document.getElementById('modalTabs').innerHTML = tabs.map((t,i)=>
+    `<button class="mtab ${i===0?'active':''}" onclick="switchTab(${i},this)">${t}</button>`
+  ).join('');
+
+  // Body
+  document.getElementById('modalBody').innerHTML = `
+    ${buildOverviewTab(e)}
+    ${buildSyllabusTab(e)}
+    ${buildPatternTab(e)}
+    ${buildTimelineTab(e)}
+    ${buildCutoffTab(e)}
+    ${buildMaterialTab(e)}
+  `;
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){
+  if(e && e.target !== document.getElementById('overlay')) return;
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function switchTab(idx, btn){
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach((p,i)=>{
+    p.classList.toggle('active', i===idx);
+  });
+}
+
+function buildOverviewTab(e){
+  return `<div class="tab-panel active">
+    <div class="alert-box">📢 Always verify dates from official website. This is indicative data for guidance only.</div>
+    <div class="info-grid">
+      <div class="info-box"><div class="info-box-label">Conducting Body</div><div class="info-box-val" style="font-size:.85rem">${e.conducting}</div></div>
+      <div class="info-box"><div class="info-box-label">Vacancies</div><div class="info-box-val">${e.vacancies}</div></div>
+      <div class="info-box"><div class="info-box-label">Eligibility</div><div class="info-box-val" style="font-size:.85rem">${e.eligibility}</div></div>
+      <div class="info-box"><div class="info-box-label">Mode</div><div class="info-box-val">${e.mode}</div></div>
+      <div class="info-box"><div class="info-box-label">Language</div><div class="info-box-val">${e.language}</div></div>
+      <div class="info-box"><div class="info-box-label">Status</div><div class="info-box-val" style="color:${e.status==='active'?'#34d399':e.status==='upcoming'?'#fbbf24':'#64748b'}">${e.status.toUpperCase()}</div></div>
+    </div>
+    <h3 class="sec">Posts & Services</h3>
+    <p style="color:var(--text2);font-size:.9rem;line-height:1.7;">${e.posts}</p>
+  </div>`;
+}
+
+function buildSyllabusTab(e){
+  const boxes = Object.entries(e.syllabus).map(([k,v])=>`
+    <div class="syllabus-box">
+      <h4>${k}</h4>
+      <ul>${v.map(i=>`<li>${i}</li>`).join('')}</ul>
+    </div>
+  `).join('');
+  return `<div class="tab-panel">
+    <h3 class="sec">Complete Syllabus</h3>
+    <div class="syllabus-grid">${boxes}</div>
+  </div>`;
+}
+
+function buildPatternTab(e){
+  if(!e.pattern) return `<div class="tab-panel"><p style="color:var(--text3)">Pattern data not available</p></div>`;
+  const rows = e.pattern.map(p=>`
+    <tr>
+      <td><strong style="color:var(--text)">${p.stage}</strong></td>
+      <td>${p.papers}</td>
+      <td>${p.duration}</td>
+      <td><strong style="color:var(--accent)">${p.marks}</strong></td>
+    </tr>
+  `).join('');
+  return `<div class="tab-panel">
+    <h3 class="sec">Exam Pattern & Selection Process</h3>
+    <table class="cutoff-table">
+      <thead><tr><th>Stage</th><th>Papers / Events</th><th>Duration</th><th>Marks</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+  </div>`;
+}
+
+function buildTimelineTab(e){
+  const events = [];
+  const fields = ['notification','applyLast','prelims','tier1','cbt1','written','exam','mains','tier2','cbt2','physical','pet','skill','ssb','interview','result'];
+  const labels = {
+    notification:'📢 Notification Released',applyLast:'📝 Last Date to Apply',
+    prelims:'📝 Preliminary Exam',tier1:'📝 Tier I Exam',cbt1:'📝 CBT Stage 1',
+    written:'📝 Written Exam',exam:'📝 Examination',mains:'📝 Main Exam',
+    tier2:'📝 Tier II Exam',cbt2:'📝 CBT Stage 2',physical:'🏃 Physical Test',
+    pet:'🏃 Physical Efficiency Test',skill:'⌨️ Skill Test',ssb:'🎖️ SSB Interview',
+    interview:'🎤 Interview / Personality Test',result:'🏆 Final Result'
+  };
+  fields.forEach(f=>{ if(e[f]) events.push({label:labels[f],date:e[f]}); });
+
+  return `<div class="tab-panel">
+    <h3 class="sec">Important Dates & Timeline</h3>
+    <ul class="timeline-list">
+      ${events.map(ev=>`<li class="timeline-item">
+        <span class="tl-date">${ev.date}</span>
+        <span class="tl-event">${ev.label}</span>
+      </li>`).join('')}
+    </ul>
+  </div>`;
+}
+
+function buildCutoffTab(e){
+  if(!e.cutoffs || !e.cutoffs.length){
+    return `<div class="tab-panel"><p style="color:var(--text3)">Cut-off data not available for this exam cycle</p></div>`;
+  }
+  const rows = e.cutoffs.map(c=>`
+    <tr>
+      <td><strong style="color:var(--accent)">${c.year}</strong></td>
+      <td>${c.general}</td>
+      <td>${c.obc}</td>
+      <td>${c.sc}</td>
+      <td>${c.st}</td>
+      <td>${c.ews}</td>
+    </tr>
+  `).join('');
+  return `<div class="tab-panel">
+    <h3 class="sec">Previous Year Cut-offs</h3>
+    <div style="overflow-x:auto">
+    <table class="cutoff-table">
+      <thead><tr><th>Year / Stage</th><th>General</th><th>OBC</th><th>SC</th><th>ST</th><th>EWS</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    </div>
+    <p style="color:var(--text3);font-size:.78rem;margin-top:12px">* Cut-offs are indicative. Actual values depend on vacancy, difficulty, and number of candidates.</p>
+  </div>`;
+}
+
+function buildMaterialTab(e){
+  if(!e.materials || !e.materials.length){
+    return `<div class="tab-panel"><p style="color:var(--text3)">Study material list not available</p></div>`;
+  }
+  return `<div class="tab-panel">
+    <h3 class="sec">Recommended Study Material</h3>
+    <div class="material-grid">
+      ${e.materials.map(m=>`
+        <div class="material-card">
+          <div class="mat-icon">${m.icon}</div>
+          <div>
+            <div class="mat-title">${m.title}</div>
+            <div class="mat-sub">${m.type} — ${m.desc}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <h3 class="sec" style="margin-top:28px">General Free Resources</h3>
+    <div class="material-grid">
+      <div class="material-card"><div class="mat-icon">🌐</div><div><div class="mat-title">Official Website</div><div class="mat-sub">Commission's official portal</div></div></div>
+      <div class="material-card"><div class="mat-icon">📰</div><div><div class="mat-title">Drishti IAS / Unacademy</div><div class="mat-sub">Free notes & articles</div></div></div>
+      <div class="material-card"><div class="mat-icon">🎥</div><div><div class="mat-title">YouTube — Free Classes</div><div class="mat-sub">Khan GS Research Centre</div></div></div>
+      <div class="material-card"><div class="mat-icon">📱</div><div><div class="mat-title">Testbook / Adda247 App</div><div class="mat-sub">Mock tests & quizzes</div></div></div>
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   PAGE NAVIGATION (simple show/hide)
+═══════════════════════════════════════════════ */
+function showPage(page){
+  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  if(page==='central'){
+    setFilter('Central');
+    setCategory('all');
+    activeCategory='all';
+  } else if(page==='state'){
+    setFilter('all');
+    setCategory('state');
+    activeCategory='state';
+  } else if(page==='home'){
+    setFilter('all');
+    setCategory('all');
+    activeFilter='all';activeCategory='all';
+    renderGrid();
+  } else if(page==='calendar'){
+    showCalendarModal();
+    return;
+  } else if(page==='notifications'){
+    showNotifModal();
+    return;
+  }
+  document.querySelector('.main').scrollIntoView({behavior:'smooth'});
+}
+
+function showCalendarModal(){
+  document.getElementById('modalHeader').innerHTML = `
+    <div class="modal-icon" style="background:rgba(59,130,246,.15)">📅</div>
+    <div><div class="modal-title">Exam Calendar 2025</div><div class="modal-sub">Upcoming government exam dates</div></div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+  `;
+  document.getElementById('modalTabs').innerHTML = '';
+
+  const calEvents = [
+    {month:'April 2025',events:['UPSC CSE Prelims Application (Last Date)','RRB NTPC Registration Open','AP Group 1 Prelims']},
+    {month:'May 2025',events:['UPPSC PCS Prelims','GPSC Class I Prelims','SSC CGL 2025 Notification','NDA I Written Exam']},
+    {month:'June 2025',events:['APPSC Group 1 Prelims','SSC CGL Tier I','RRB NTPC CBT Stage 1','UPSC CSE Prelims','TS TET Exam','TNPSC Group 1 Prelims']},
+    {month:'July 2025',events:['IBPS PO Notification','TS Police SI Written','TN Police PC Exam','AP TET Exam','WBCS Prelims','SSC CGL Tier II']},
+    {month:'August 2025',events:['MPSC State Service Prelims','UPPSC PCS Mains','MPPSC Prelims','TS TET Results']},
+    {month:'September 2025',events:['RPSC RAS Prelims','KPSC KAS Prelims','NDA II Written Exam','IBPS PO Prelims','SSC CGL Tier II Final']},
+    {month:'October 2025',events:['APPSC Group 1 Mains','TNPSC Group 1 Mains','IBPS PO Mains','PPSC Mains']},
+    {month:'November 2025',events:['UPSC CSE Mains','GPSC Mains','WBCS Mains','JPSC Mains']},
+    {month:'December 2025',events:['TSPSC Group 1 Interviews','IBPS PO Results','SSC CGL Results']},
+  ];
+
+  document.getElementById('modalBody').innerHTML = `<div class="tab-panel active">
+    ${calEvents.map(m=>`
+      <h3 class="sec">${m.month}</h3>
+      <ul style="padding-left:0;list-style:none;">
+        ${m.events.map(ev=>`<li style="padding:8px 0;border-bottom:1px solid var(--border);font-size:.88rem;color:var(--text2);display:flex;gap:10px;align-items:center"><span style="color:var(--accent)">▸</span>${ev}</li>`).join('')}
+      </ul>
+    `).join('')}
+  </div>`;
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function showNotifModal(){
+  document.getElementById('modalHeader').innerHTML = `
+    <div class="modal-icon" style="background:rgba(239,68,68,.15)">🔔</div>
+    <div><div class="modal-title">Live Notifications</div><div class="modal-sub">Latest government exam updates</div></div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+  `;
+  document.getElementById('modalTabs').innerHTML = '';
+
+  const notifs = [
+    {date:'Apr 28, 2025',exam:'UPSC CSE 2025',update:'Notification released. Apply at upsconline.gov.in',tag:'active'},
+    {date:'Apr 25, 2025',exam:'RRB NTPC 2025',update:'Registration window now open. Last date: May 15, 2025',tag:'active'},
+    {date:'Apr 22, 2025',exam:'SSC CGL 2025',update:'Exam schedule announced. Tier I: July 2025',tag:'upcoming'},
+    {date:'Apr 20, 2025',exam:'AP Group 1 2025',update:'Notification released by APPSC. Apply now',tag:'active'},
+    {date:'Apr 18, 2025',exam:'TSPSC AEE 2025',update:'Results declared. Check merit list on tspsc.gov.in',tag:'active'},
+    {date:'Apr 15, 2025',exam:'UP Police Constable 2025',update:'Exam city intimation released for 60,244 posts',tag:'active'},
+    {date:'Apr 12, 2025',exam:'IBPS PO 2025',update:'Notification expected in June 2025',tag:'upcoming'},
+    {date:'Apr 10, 2025',exam:'TN TRB PG Asst',update:'Counselling schedule announced at trb.tn.gov.in',tag:'active'},
+    {date:'Apr 08, 2025',exam:'MPSC State Service 2025',update:'Preliminary exam scheduled for August 2025',tag:'upcoming'},
+    {date:'Apr 05, 2025',exam:'Kerala PSC LDC',update:'Rank list published on keralapsc.gov.in',tag:'active'},
+    {date:'Apr 02, 2025',exam:'MPPSC 2025',update:'Online application form available at mppsc.mp.gov.in',tag:'active'},
+    {date:'Mar 28, 2025',exam:'RRB Group D 2025',update:'Notification to be released in April 2025',tag:'upcoming'},
+  ];
+
+  document.getElementById('modalBody').innerHTML = `<div class="tab-panel active">
+    ${notifs.map(n=>`<div style="display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);align-items:flex-start">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--text3);min-width:90px;padding-top:2px">${n.date}</span>
+      <div>
+        <div style="font-weight:600;font-size:.9rem;color:var(--accent);margin-bottom:4px">${n.exam}</div>
+        <div style="font-size:.85rem;color:var(--text2)">${n.update}</div>
+      </div>
+      <span class="status-badge status-${n.tag==='active'?'active':'upcoming'}" style="margin-left:auto;flex-shrink:0">${n.tag}</span>
+    </div>`).join('')}
+  </div>`;
+
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+// Keyboard close
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') { document.getElementById('overlay').classList.remove('open'); document.body.style.overflow=''; }});
+
+// Init
+init();
+</script>
+</body>
+</html>
