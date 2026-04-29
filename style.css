@@ -140,6 +140,17 @@ nav button:hover,nav button.active{
 }
 .search-btn:hover{background:#d97706;}
 
+/* ── DOWNLOAD BUTTON ── */
+.download-btn{
+  display:inline-block;
+  background:var(--accent);color:#000;
+  text-decoration:none;border-radius:10px;
+  padding:12px 24px;font-family:'Syne',sans-serif;
+  font-weight:700;font-size:.9rem;cursor:pointer;
+  transition:.2s;white-space:nowrap;
+}
+.download-btn:hover{background:#d97706;}
+
 /* ── FILTERS ── */
 .filters{
   max-width:1400px;margin:0 auto;

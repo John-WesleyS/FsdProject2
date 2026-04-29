@@ -1,7 +1,4 @@
 
-/* ═══════════════════════════════════════════════
-   DATA
-═══════════════════════════════════════════════ */
 const notifications = [
   "🔔 UPSC Civil Services 2025 Notification Released — Apply by April 30 |",
   "🔔 SSC CGL 2025 Exam Dates Announced — Tier I: July 2025 |",
@@ -54,6 +51,7 @@ const EXAMS = [
     mains:'Sept 2025',
     interview:'Jan 2026',
     result:'April 2026',
+    admitCardUrl:'https://upsc.gov.in/',
     syllabus:{
       'GS Paper I':['Indian Heritage & Culture','History of India','Geography of India & World'],
       'GS Paper II':['Governance & Constitution','Polity','Social Justice','International Relations'],
@@ -98,6 +96,7 @@ const EXAMS = [
     tier1:'Jan–March 2025',
     tier2:'June–July 2025',
     result:'Oct 2025',
+    admitCardUrl:'https://ssc.nic.in/',
     syllabus:{
       'Tier I — General Intelligence':['Analogy','Series','Coding-Decoding','Directions','Blood Relations','Puzzles'],
       'Tier I — General Awareness':['History','Geography','Polity','Economics','Science','Current Affairs'],
@@ -140,6 +139,7 @@ const EXAMS = [
     cbt2:'June 2025',
     skill:'July–Aug 2025',
     result:'Dec 2025',
+    admitCardUrl:'https://indianrailways.gov.in/',
     syllabus:{
       'Mathematics':['Number System','Decimals','Fractions','LCM & HCF','Ratio & Proportion','Percentage','Mensuration','Time & Work','Time & Distance','SI & CI','Profit & Loss','Elementary Algebra','Geometry','Trigonometry'],
       'General Intelligence':['Analogies','Completion of Number/Alphabetic Series','Coding-Decoding','Directions','Data Sufficiency','Statement Conclusion','Venn Diagrams','Blood Relations'],
@@ -256,6 +256,7 @@ const EXAMS = [
     written:'April 2025 / Sept 2025',
     ssb:'June–Sept 2025',
     result:'Dec 2025',
+    admitCardUrl:'https://upsc.gov.in/',
     syllabus:{
       'Mathematics (300M)':['Algebra','Matrices & Determinants','Trigonometry','Analytical Geometry 2D&3D','Differential Calculus','Integral Calculus','Vector Algebra','Statistics & Probability'],
       'GAT — English (200M)':['Grammar','Vocabulary','Comprehension','Composition'],
@@ -295,6 +296,7 @@ const EXAMS = [
     prelims:'June 2025',
     mains:'Oct 2025',
     interview:'Dec 2025',
+    admitCardUrl:'https://psc.ap.gov.in/',
     syllabus:{
       'Paper I — History & Culture':['AP History','National Movement','Indian Culture','AP Festivals & Arts'],
       'Paper II — Geography & Environment':['AP Geography','Rivers','Forests','Environment & Ecology'],
@@ -4667,7 +4669,7 @@ function openModal(id){
   `;
 
   // Tabs
-  const tabs = ['Overview','Syllabus','Exam Pattern','Timeline','Cut-offs','Study Material'];
+  const tabs = ['Overview','Syllabus','Exam Pattern','Timeline','Cut-offs','Study Material','Admit Cards','Mock Tests'];
   document.getElementById('modalTabs').innerHTML = tabs.map((t,i)=>
     `<button class="mtab ${i===0?'active':''}" onclick="switchTab(${i},this)">${t}</button>`
   ).join('');
@@ -4680,6 +4682,8 @@ function openModal(id){
     ${buildTimelineTab(e)}
     ${buildCutoffTab(e)}
     ${buildMaterialTab(e)}
+    ${buildAdmitCardTab(e)}
+    ${buildMockTestTab(e)}
   `;
 
   document.getElementById('overlay').classList.add('open');
@@ -4822,6 +4826,42 @@ function buildMaterialTab(e){
       <div class="material-card"><div class="mat-icon">🎥</div><div><div class="mat-title">YouTube — Free Classes</div><div class="mat-sub">Khan GS Research Centre</div></div></div>
       <div class="material-card"><div class="mat-icon">📱</div><div><div class="mat-title">Testbook / Adda247 App</div><div class="mat-sub">Mock tests & quizzes</div></div></div>
     </div>
+  </div>`;
+}
+
+function buildAdmitCardTab(e){
+  // Assume each exam has an official website or admit card link
+  const admitCardUrl = e.admitCardUrl || `https://www.google.com/search?q=${encodeURIComponent(e.conducting + ' admit card')}`;
+  return `<div class="tab-panel">
+    <h3 class="sec">Download Admit Card</h3>
+    <p style="color:var(--text2);font-size:.9rem;margin-bottom:20px;">Click the button below to download your admit card or visit the official exam website.</p>
+    <a href="${admitCardUrl}" target="_blank" class="download-btn">📄 Download Admit Card / Visit Official Site</a>
+    <div class="alert-box" style="margin-top:20px;">⚠️ Admit cards are usually released 2-4 weeks before the exam date. Check the official website regularly.</div>
+  </div>`;
+}
+
+function buildMockTestTab(e){
+  const mockTestSites = [
+    {name: 'Testbook', url: 'https://testbook.com/', icon: '📱'},
+    {name: 'Adda247', url: 'https://www.adda247.com/', icon: '🎯'},
+    {name: 'Oliveboard', url: 'https://www.oliveboard.in/', icon: '🧠'},
+    {name: 'Gradeup', url: 'https://gradeup.co/', icon: '📈'},
+  ];
+  return `<div class="tab-panel">
+    <h3 class="sec">Practice Mock Tests</h3>
+    <p style="color:var(--text2);font-size:.9rem;margin-bottom:20px;">Improve your preparation with mock tests from popular platforms.</p>
+    <div class="material-grid">
+      ${mockTestSites.map(site=>`
+        <div class="material-card" onclick="window.open('${site.url}', '_blank')">
+          <div class="mat-icon">${site.icon}</div>
+          <div>
+            <div class="mat-title">${site.name}</div>
+            <div class="mat-sub">Mock Tests & Practice</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="alert-box" style="margin-top:20px;">💡 Regular mock test practice helps in time management and identifying weak areas.</div>
   </div>`;
 }
 
